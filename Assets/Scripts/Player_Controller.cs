@@ -1,32 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] Transform playerCamera = null;
+    [SerializeField] Transform playerCamera = null; // Used to access transform of the player camera
     [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float walkSpeed = 19.0f;
+    [SerializeField] float walkSpeed = 6.0f;
     [SerializeField] float gravity = -13.0f;
-    [SerializeField][Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
-    [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
+    [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
 
-    [SerializeField] bool lockCursor = true;
+    [SerializeField] AnimationCurve jumpFallOff;
+    [SerializeField] float jumpMultiplier = 10f;
+    [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
-    float cameraPitch = 0.0f;
+
+    bool isJumping;
+
+    [SerializeField] bool lockCursor = true; //This variable will be used to lock the cursor and will start as true
+
+    float cameraPitch = 0.0f; //Keeps track of Cameras x rotation (Used for vertical movement of camera)
     float velocityY = 0.0f;
     CharacterController controller = null;
 
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
-    Vector2 currentMouseDelta = Vector2.zero;
-    Vector2 currentMouseDeltaVelocity = Vector2.zero;
+
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        if(lockCursor)
+        if (lockCursor) //Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -39,34 +46,60 @@ public class Player_Controller : MonoBehaviour
         UpdateMovement();
     }
 
-    void UpdateMouseLook()
+    void UpdateMouseLook() //Dedicated method for mouse movement functionality 
     {
-        Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
-        currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentMouseDeltaVelocity, mouseSmoothTime);
-
-        cameraPitch -= currentMouseDelta.y * mouseSensitivity;
-        cameraPitch = Mathf.Clamp(cameraPitch, -90.0f, 90.0f);
+        cameraPitch = cameraPitch - (mouseDelta.y * mouseSensitivity); // Responsible for vertical positioning of camera (The reason we subtract is to get the inverse of the mouseDelta in order to avoid inverted vertical movement
+        cameraPitch = Mathf.Clamp(cameraPitch, -90.0f, 90.0f); //This line is needed so the player cannot move beyond  180 degrees up or down. Camera pitch is set to 0.0 and starts that way so if the player looks up or down they will be going max 90 degrees
 
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
-        transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
+        transform.Rotate(Vector3.up * mouseDelta.x * mouseSensitivity); //Responsible for manipulating the transform of the player object to rotate the player horrizontally multiplied by mouse 
     }
 
-    void UpdateMovement()
+    void UpdateMovement() //Dedicated method for movement 
     {
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
 
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
 
-        if(controller.isGrounded)
+        if (controller.isGrounded)
             velocityY = 0.0f;
 
         velocityY += gravity * Time.deltaTime;
-		
+
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed + Vector3.up * velocityY;
 
         controller.Move(velocity * Time.deltaTime);
 
+        JumpInput();
+
     }
+
+    private void JumpInput()
+    {
+        if (Input.GetKeyDown(jumpKey) && !isJumping)
+        {
+            isJumping = true;
+            StartCoroutine(JumpEvent());
+        }
+    }
+
+    private IEnumerator JumpEvent()
+    {
+        float timeInAir = 0.0f;
+
+        do
+        {
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            controller.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+            timeInAir += Time.deltaTime;
+            yield return null;
+        } while (!controller.isGrounded && controller.collisionFlags != CollisionFlags.Above);
+
+        isJumping = false;
+    }
+
+
 }
