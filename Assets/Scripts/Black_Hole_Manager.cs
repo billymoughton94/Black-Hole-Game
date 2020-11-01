@@ -14,20 +14,24 @@ public class Black_Hole_Manager : MonoBehaviour
     private Vector3 targetScale;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         startScale = gameObject.transform.localScale;
         targetScale = new Vector3(2000.0f, 2000.0f, 2000.0f);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         StartCoroutine(increaseMass());
     }
+    
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log(collision.gameObject.name);
+        if(collision.collider.tag == "Player") {
+            Game_Manager.endGame(EndScenario.GAMEOVER);
+        }
+    }
 
-    IEnumerator increaseMass()
-    {
+    IEnumerator increaseMass() {
         float timeElapsed = 0;
 
         // whilst timeElapsed <= duration, expand the Black Hole size per frame

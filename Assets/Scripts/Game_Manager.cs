@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using TMPro;
-using System.Text.RegularExpressions;
+﻿using UnityEngine;
 
-public enum EndScenario
-{
+public enum EndScenario {
     GAMEOVER,
     VICTORY
 }
@@ -50,7 +44,8 @@ public class Game_Manager : MonoBehaviour
         }
             
     }
-
+    
+    // Unlock the cursor to allow menu use
     private static void unlockCursor() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
