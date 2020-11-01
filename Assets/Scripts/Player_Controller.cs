@@ -42,7 +42,7 @@ public class Player_Controller : MonoBehaviour {
         UpdateMovement();
     }
 
-    // Dedicated method for mouse movement functionality  
+    // Dedicated update method for mouse movement functionality  
     void UpdateMouseLook() {
         Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
@@ -53,7 +53,7 @@ public class Player_Controller : MonoBehaviour {
         transform.Rotate(Vector3.up * mouseDelta.x * mouseSensitivity); //Responsible for manipulating the transform of the player object to rotate the player horrizontally multiplied by mouse 
     }
 
-    // Dedicated method for movement 
+    // Dedicated update method for movement 
     void UpdateMovement() {
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
@@ -95,7 +95,7 @@ public class Player_Controller : MonoBehaviour {
         isJumping = false;
     }
 
-    void OnTriggerEnter(Collider collider) {
+    void OnTriggerEnter(Collider collider) { //Method for how player interacts with key objects in the game. (This is to simluate picking it up and storing it)
         if (collider.gameObject.name == "Antenna" || collider.gameObject.name == "Ship Body" || collider.gameObject.name == "Fuel Containers") {
             Game_Manager.tickOffItem(collider.gameObject);
             Destroy(collider.gameObject);
