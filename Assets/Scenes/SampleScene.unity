@@ -661,7 +661,7 @@ MonoBehaviour:
   m_text: 'Congratulations
 
 
-    You escape the planet and life to see another day!'
+    You escape the planet and live to see another day!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -965,8 +965,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
+      time: -0.0041389465
+      value: 1.010315
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -974,8 +974,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9958496
+      value: -0.0051460266
       inSlope: 0
       outSlope: 0
       tangentMode: 0

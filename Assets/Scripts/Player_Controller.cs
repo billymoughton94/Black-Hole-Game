@@ -23,8 +23,6 @@ public class Player_Controller : MonoBehaviour {
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
-
-
     void Start() {
         controller = GetComponent<CharacterController>();
         // Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
@@ -32,6 +30,11 @@ public class Player_Controller : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    private void Awake()
+    {
+        Time.timeScale = 1; // begins the game
     }
 
     void Update() {

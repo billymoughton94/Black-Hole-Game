@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.Build.Content;
 
 public class UI_Controller : MonoBehaviour {
     
@@ -43,12 +44,9 @@ public class UI_Controller : MonoBehaviour {
         DefeatPanel.SetActive(true);
     }
 
-    public void retryPressed() { 
-        // Restart the game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void retryPressed() {
+        // Restart the game.
+        
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
-    
-    
-    
-    
 }
