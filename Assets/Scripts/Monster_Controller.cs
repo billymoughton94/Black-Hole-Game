@@ -112,11 +112,11 @@ public class Monster_Controller : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
 
-            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION
+            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION. IF HIT, GAME OVER
             if (nextToPlayer)
             {
                 Debug.Log("THE MONSTER ATTACKS THE PLAYER");
-                // TODO: IMPLEMENT GAME OVER AFTER CERTAIN NUMBER OF ATTACKS
+                Game_Manager.endGame(EndScenario.GAMEOVER);
             }
 
             yield return new WaitForSeconds(5.0f);
