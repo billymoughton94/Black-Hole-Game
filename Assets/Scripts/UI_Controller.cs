@@ -6,6 +6,10 @@ using TMPro;
 public class UI_Controller : MonoBehaviour {
   [SerializeField]
   private GameObject player;
-  [SerializeField]
   private TextMeshProUGUI  healthUI;
+  private TextMeshProUGUI partsUI;
+
+  void start() {
+    
+  }
 }
