@@ -5,9 +5,7 @@ public enum EndScenario {
     VICTORY
 }
 
-public class Game_Manager : MonoBehaviour
-
-{
+public class Game_Manager : MonoBehaviour {
     private static int itemCount; //total number of items collected
     private static int itemLimit = 3; // number of items to collect
 
