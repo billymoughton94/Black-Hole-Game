@@ -10,11 +10,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Gravity_Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Game_Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Black_Hole_Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Game_Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Camera_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Monster_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player_Controller.cs" />
       </list>
     </option>
   </component>

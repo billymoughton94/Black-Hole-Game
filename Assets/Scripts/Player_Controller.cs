@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Player_Controller : MonoBehaviour
-{
+public class Player_Controller : MonoBehaviour {
     [SerializeField] Transform playerCamera = null; // Used to access transform of the player camera
     [SerializeField] float mouseSensitivity = 3.5f;
     [SerializeField] float walkSpeed = 6.0f;
@@ -18,9 +14,9 @@ public class Player_Controller : MonoBehaviour
 
     bool isJumping;
 
-    [SerializeField] bool lockCursor = true; //This variable will be used to lock the cursor and will start as true
+    [SerializeField] bool lockCursor = true; // This variable will be used to lock the cursor and will start as true
 
-    float cameraPitch = 0.0f; //Keeps track of Cameras x rotation (Used for vertical movement of camera)
+    float cameraPitch = 0.0f; // Keeps track of Cameras x rotation (Used for vertical movement of camera)
     float velocityY = 0.0f;
     CharacterController controller = null;
 
@@ -29,24 +25,22 @@ public class Player_Controller : MonoBehaviour
 
 
 
-    void Start()
-    {
+    void Start() {
         controller = GetComponent<CharacterController>();
-        if (lockCursor) //Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
-        {
+        // Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
+        if (lockCursor) {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
     }
 
-    void Update()
-    {
+    void Update() {
         UpdateMouseLook();
         UpdateMovement();
     }
 
-    void UpdateMouseLook() //Dedicated method for mouse movement functionality 
-    {
+    // Dedicated method for mouse movement functionality  
+    void UpdateMouseLook() {
         Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         cameraPitch = cameraPitch - (mouseDelta.y * mouseSensitivity); // Responsible for vertical positioning of camera (The reason we subtract is to get the inverse of the mouseDelta in order to avoid inverted vertical movement
@@ -56,8 +50,8 @@ public class Player_Controller : MonoBehaviour
         transform.Rotate(Vector3.up * mouseDelta.x * mouseSensitivity); //Responsible for manipulating the transform of the player object to rotate the player horrizontally multiplied by mouse 
     }
 
-    void UpdateMovement() //Dedicated method for movement 
-    {
+    // Dedicated method for movement 
+    void UpdateMovement() {
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
 
@@ -73,7 +67,6 @@ public class Player_Controller : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         JumpInput();
-
     }
 
     private void JumpInput() //Method to detect when jumping key is pressed 
@@ -89,8 +82,7 @@ public class Player_Controller : MonoBehaviour
     {
         float timeInAir = 0.0f;
 
-        do
-        {
+        do {
             float jumpForce = jumpFallOff.Evaluate(timeInAir);
             controller.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
             timeInAir += Time.deltaTime;
