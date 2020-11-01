@@ -1487,8 +1487,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 60, y: 45, z: 25}
-  m_Center: {x: 0, y: 23, z: 0}
+  m_Size: {x: 60, y: 45, z: 67.8}
+  m_Center: {x: 0, y: 23, z: 20.8}
 --- !u!54 &1549068166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1517,6 +1517,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91029f601d5c9fd428a92a6288378d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 10
   aggroDistance: 50
-  attackDistance: 10

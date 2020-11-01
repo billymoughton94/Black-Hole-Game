@@ -17,17 +17,19 @@ public class Monster_Controller : MonoBehaviour
     public float walkSpeed;
     private float distanceFromPlayer;
     public float aggroDistance;
-    public float attackDistance;
+
+    private bool nextToPlayer;
+
+    IEnumerator attack;
 
     // Start is called before the first frame update
     void Start()
     {
+        nextToPlayer = false;
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         monsterAnim = GetComponent<Animator>();
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
-        StartCoroutine(attackPlayer());
-
     }
 
     // Update is called once per frame
@@ -48,51 +50,73 @@ public class Monster_Controller : MonoBehaviour
         if(distanceFromPlayer <= aggroDistance)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            Quaternion targetDirection = Quaternion.LookRotation(direction, Vector3.up);
+            Quaternion targetDirection = Quaternion.LookRotation(direction);
             Quaternion deltaRotation = Quaternion.Slerp(transform.rotation, targetDirection, walkSpeed * Time.fixedDeltaTime);
-            rb.MoveRotation(deltaRotation);
+            rb.MoveRotation(Quaternion.Euler(new Vector3(rb.rotation.x, deltaRotation.eulerAngles.y, rb.rotation.z)));
         }
     }
-
 
     private void moveTowardsPlayer()
     {
         // ANIMATES MONSTER AND MOVES TOWARDS PLAYER IF IN AGGRO ZONE AND ABOVE ATTACK ZONE
-        if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
+        if ((distanceFromPlayer <= aggroDistance) && nextToPlayer == false)
         {
-            monsterAnim.SetFloat("InputZ", 1.0f);
             rb.velocity = transform.forward * walkSpeed;
+            if (monsterAnim.GetFloat("InputZ") != 1.0f)
+                monsterAnim.SetFloat("InputZ", 1.0f);
+
         }
 
-        // ATTACK PLAYER IF WITHIN ATTACK ZONE OR STOPS MOVING IF OUTSIDE AGGRO DISTANCE
-        if(distanceFromPlayer <= attackDistance || distanceFromPlayer > aggroDistance)
+        // SWITCHES TO IDLE POSITION IF NEXT TO PLAYER OR OUTSIDE OF AGGRO DISTANCE
+        if (distanceFromPlayer > aggroDistance || nextToPlayer == true)
         {
-            monsterAnim.SetFloat("InputZ", 0.0f);
-        }    
+            if (monsterAnim.GetFloat("InputZ") != 0.0f)
+                monsterAnim.SetFloat("InputZ", 0.0f);
+        }
+
     }
 
+    // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE1
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Player" && nextToPlayer == false)
+        {
+            nextToPlayer = true;
+            attack = attackPlayer();
+            StartCoroutine(attack);
+        }
+    }
+
+    // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("LEAVING MONSTER ATTACK RANGE");
+            nextToPlayer = false;
+            StopCoroutine(attack);
+            monsterAnim.SetBool("NextToPlayer", false);
+        }
+    }
 
     // ATTACKS PLAYER IF NEXT TO THEM
     IEnumerator attackPlayer()
     {
         while(true)
         { 
-            if (distanceFromPlayer < attackDistance)
+            if(monsterAnim.GetBool("NextToPlayer") != true)
             {
-                if(monsterAnim.GetBool("NextToPlayer") != true)
-                {
-                    monsterAnim.SetBool("NextToPlayer", true);
-                    yield return new WaitForSeconds(2);
-                    monsterAnim.SetBool("NextToPlayer", false);
-                }
-
-                Debug.Log("THE MONSTER ATTACKS THE PLAYER");
+                monsterAnim.SetBool("NextToPlayer", true);
+                yield return new WaitForSeconds(2);
+                monsterAnim.SetBool("NextToPlayer", false);
             }
+            yield return new WaitForFixedUpdate();
 
-            else
+            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION
+            if (nextToPlayer)
             {
-                if (monsterAnim.GetBool("NextToPlayer") != false)
-                    monsterAnim.SetBool("NextToPlayer", false);
+                Debug.Log("THE MONSTER ATTACKS THE PLAYER");
+                // TODO: IMPLEMENT GAME OVER AFTER CERTAIN NUMBER OF ATTACKS
             }
 
             yield return new WaitForSeconds(5.0f);
