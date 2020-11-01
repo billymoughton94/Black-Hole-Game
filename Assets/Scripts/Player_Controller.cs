@@ -16,7 +16,6 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float jumpMultiplier = 10f;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
 
-
     bool isJumping;
 
     [SerializeField] bool lockCursor = true; //This variable will be used to lock the cursor and will start as true
@@ -100,6 +99,17 @@ public class Player_Controller : MonoBehaviour
 
         isJumping = false;
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.name == "Antenna" || collider.gameObject.name == "Ship Body" || collider.gameObject.name == "Fuel Containers")
+        {
+            Game_Manager.tickOffItem(collider.gameObject);
+            Destroy(collider.gameObject);
+           
+        }
+    }
+
 
 
 }
