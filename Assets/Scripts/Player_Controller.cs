@@ -76,7 +76,7 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    private void JumpInput()
+    private void JumpInput() //Method to detect when jumping key is pressed 
     {
         if (Input.GetKeyDown(jumpKey) && !isJumping)
         {
@@ -85,7 +85,7 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    private IEnumerator JumpEvent()
+    private IEnumerator JumpEvent() //Method for jumping physics 
     {
         float timeInAir = 0.0f;
 
