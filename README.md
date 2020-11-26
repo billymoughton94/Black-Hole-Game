@@ -7,5 +7,8 @@ Free Assets used from the Unity Asset Store:
 Ancient Ruins in the desert - Part1 - NEKCOM Entertainment,
 Space Cruiser 1 - Gamer Squid,
 Starfield Skybox - PULSAR BYTES,
-Character Monsters X - Vadim Ziambetov
+Character Monsters X - Vadim Ziambetov,
+Rock 01 - CrazyTextures - https://assetstore.unity.com/packages/2d/textures-materials/stone/rock-01-28673
+Grass And Flowers Pack 1 - Vladislav Pochezhertsev - https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-and-flowers-pack-1-17100#content
+Horror and Sci-Fi Ambience LOOPS LITE - Seth O'Dale - https://assetstore.unity.com/packages/audio/ambient/horror-and-sci-fi-ambience-loops-lite-99626
 ----------- UPDATE USED ASSETS WHEN PUSHING ----------
