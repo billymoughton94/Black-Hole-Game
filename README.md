@@ -7,5 +7,6 @@ Free Assets used from the Unity Asset Store:
 Ancient Ruins in the desert - Part1 - NEKCOM Entertainment,
 Space Cruiser 1 - Gamer Squid,
 Starfield Skybox - PULSAR BYTES,
-Character Monsters X - Vadim Ziambetov
+Character Monsters X - Vadim Ziambetov,
+Rock 01 - CrazyTextures - https://assetstore.unity.com/packages/2d/textures-materials/stone/rock-01-28673
 ----------- UPDATE USED ASSETS WHEN PUSHING ----------
