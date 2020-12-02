@@ -9,8 +9,6 @@ public class UI_Controller : MonoBehaviour {
     
     // Dictionary containing the parts and the quantity obtained
     private Dictionary<string, int> parts;
-    private bool panelOpen;
-    
     
     void Start() {
         // Initialise the parts dictionary and add the initial values
@@ -18,7 +16,6 @@ public class UI_Controller : MonoBehaviour {
         parts.Add("Antenna", 0);
         parts.Add("Ship Body", 0);
         parts.Add("Fuel Containers", 0);
-        panelOpen = false;
     }
 
     public void updatePartsList(GameObject item) {
@@ -35,17 +32,6 @@ public class UI_Controller : MonoBehaviour {
         partsList.text = partsListText;
     }
 
-    private void updateInventory() {
-        TextMeshProUGUI itemList = transform.Find("InventoryPanel").Find("ItemList").GetComponent<TextMeshProUGUI>();
-        Inventory_Controller inventory = GameObject.Find("Player").GetComponent<Inventory_Controller>();
-        Dictionary<String, int> items = inventory.getItems();
-        String itemListText = "";
-        foreach (KeyValuePair<String, int> item in items) {
-            itemListText += item.Key + ": " + item.Value + "\n";
-        }
-        itemList.text = itemListText;
-    }
-
     public void showVictoryPanel() {
         // Get the victory panel game object and set it to active
         GameObject VictoryPanel = transform.Find("VictoryPanel").gameObject;
@@ -57,45 +43,10 @@ public class UI_Controller : MonoBehaviour {
         GameObject DefeatPanel = transform.Find("DefeatPanel").gameObject;
         DefeatPanel.SetActive(true);
     }
-    
 
-<<<<<<< HEAD
     public void retryPressed() {
         // Restart the game.
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-=======
-    public void hideInventoryPanel() {
-        GameObject InventoryPanel = transform.Find("InventoryPanel").gameObject;
-        InventoryPanel.SetActive(false);
-    }
-    
-    public void hideCraftingPanel() {
-        GameObject CraftingPanel = transform.Find("CraftingPanel").gameObject;
-        CraftingPanel.SetActive(false);
-    }
-
-    public void togglePanel(String name) {
-        if (panelOpen) {
-            hideCraftingPanel();
-            hideInventoryPanel();
-            panelOpen = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else {
-            GameObject panel = transform.Find(name + "Panel").gameObject;
-            updateInventory();
-            panel.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            panelOpen = true;
-        }
-        
-    }
-    public void retryPressed() {
-        // Restart the game.      
-        SceneManager.LoadScene("NewScene", LoadSceneMode.Single);
->>>>>>> parent of be725d1... .
 
     }
 }
