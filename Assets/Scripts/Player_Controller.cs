@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player_Controller : MonoBehaviour {
     [SerializeField] Transform playerCamera = null; // Used to access transform of the player camera
@@ -19,12 +20,14 @@ public class Player_Controller : MonoBehaviour {
     float cameraPitch = 0.0f; // Keeps track of Cameras x rotation (Used for vertical movement of camera)
     float velocityY = 0.0f;
     CharacterController controller = null;
+    private UI_Controller UI;
 
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
     void Start() {
         controller = GetComponent<CharacterController>();
+        UI = GameObject.Find("UI").GetComponent<UI_Controller>();
         // Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
         if (lockCursor) {
             Cursor.lockState = CursorLockMode.Locked;
@@ -40,6 +43,8 @@ public class Player_Controller : MonoBehaviour {
     void Update() {
         UpdateMouseLook();
         UpdateMovement();
+        inventoryInput();
+        craftingInput();
     }
 
     // Dedicated update method for mouse movement functionality  
@@ -72,12 +77,23 @@ public class Player_Controller : MonoBehaviour {
         JumpInput();
     }
 
-    private void JumpInput() //Method to detect when jumping key is pressed 
-    {
-        if (Input.GetKeyDown(jumpKey) && !isJumping)
-        {
+    //Method to detect when jumping key is pressed 
+    private void JumpInput() {
+        if (Input.GetKeyDown(jumpKey) && !isJumping) {
             isJumping = true;
             StartCoroutine(JumpEvent());
+        }
+    }
+
+    private void inventoryInput() {
+        if (Input.GetKeyUp(KeyCode.I)) {
+            UI.togglePanel("Inventory");
+        }
+    }
+    
+    private void craftingInput() {
+        if (Input.GetKeyUp(KeyCode.C)) {
+            UI.togglePanel("Crafting");
         }
     }
 
@@ -101,7 +117,4 @@ public class Player_Controller : MonoBehaviour {
             Destroy(collider.gameObject);
         }
     }
-
-
-
 }
