@@ -17,12 +17,14 @@ public class Game_Manager : MonoBehaviour {
                 GameObject.Find("UI").GetComponent<UI_Controller>().showDefeatPanel();
                 unlockCursor();
                 Time.timeScale = 0;
+                Debug.Log("Defeat reached");
                 break;
             case EndScenario.VICTORY:
                 // Display the Victory panel
                 GameObject.Find("UI").GetComponent<UI_Controller>().showVictoryPanel();
                 unlockCursor();
                 Time.timeScale = 0;
+                Debug.Log("Victory reached");
                 break;
         }
     }
@@ -32,10 +34,13 @@ public class Game_Manager : MonoBehaviour {
         // Call the UI Controller to update the parts list
         GameObject.Find("UI").GetComponent<UI_Controller>().updatePartsList(item);
         itemCount++;
+        Debug.Log(itemCount);
+        Debug.Log(itemLimit);
         if (itemCount == itemLimit) {
             Debug.Log(itemLimit);
             endGame(EndScenario.VICTORY);
         }
+            
     }
     
     // Unlock the cursor to allow menu use
