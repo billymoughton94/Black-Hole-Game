@@ -88,7 +88,8 @@ public class UI_Controller : MonoBehaviour {
         
     }
     public void retryPressed() {
-        // Restart the game.
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        // Restart the game.      
+        SceneManager.LoadScene("NewScene", LoadSceneMode.Single);
+
     }
 }
