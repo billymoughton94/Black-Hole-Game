@@ -46,11 +46,7 @@ public class UI_Controller : MonoBehaviour {
 
     public void retryPressed() {
         // Restart the game.
-<<<<<<< HEAD
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-=======
-        
-        SceneManager.LoadScene("NewScene", LoadSceneMode.Single);
->>>>>>> parent of d269748... Merge branch 'revamped' of https://github.com/billymoughton94/Black-Hole-Game into revamped
+
     }
 }
