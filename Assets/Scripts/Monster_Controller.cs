@@ -10,18 +10,17 @@ public class Monster_Controller : MonoBehaviour {
 
     private GameObject player;
     
-    public float walkSpeed;
     private float distanceFromPlayer;
     public float aggroDistance;
 
-    private bool nextToPlayer;
+    //private bool nextToPlayer;
 
     IEnumerator attack;
 
     // Start is called before the first frame update
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-        nextToPlayer = false;
+        //nextToPlayer = false;
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         monsterAnim = GetComponent<Animator>();
@@ -38,9 +37,8 @@ public class Monster_Controller : MonoBehaviour {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
-        if (distanceFromPlayer <= aggroDistance && nextToPlayer == false)
+        if (distanceFromPlayer <= aggroDistance)
         {
-            nav.isStopped = false;
             nav.SetDestination(player.transform.position);
             if (monsterAnim.GetFloat("InputZ") != 1.0f)
                 monsterAnim.SetFloat("InputZ", 1.0f);
@@ -48,21 +46,21 @@ public class Monster_Controller : MonoBehaviour {
 
 
         // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
-        if (distanceFromPlayer > aggroDistance || nextToPlayer == true)
+        if (distanceFromPlayer > aggroDistance || nav.isStopped)
         {
-            nav.isStopped = true;
+            //nav.isStopped = true;
             if (monsterAnim.GetFloat("InputZ") != 0.0f)
                 monsterAnim.SetFloat("InputZ", 0.0f);
         }
     }
 
-    // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE1
+    // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" && nextToPlayer == false)
+        if (collision.collider.tag == "Player")
         {
 
-            nextToPlayer = true;
+            //nextToPlayer = true;
             attack = attackPlayer();
             StartCoroutine(attack);
         }
@@ -74,7 +72,7 @@ public class Monster_Controller : MonoBehaviour {
         if (collision.collider.tag == "Player")
         {
             Debug.Log("LEAVING MONSTER ATTACK RANGE");
-            nextToPlayer = false;
+            //nextToPlayer = false;
             StopCoroutine(attack);
             monsterAnim.SetBool("NextToPlayer", false);
         }
@@ -94,11 +92,11 @@ public class Monster_Controller : MonoBehaviour {
             yield return new WaitForFixedUpdate();
 
             // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION. IF HIT, GAME OVER
-            if (nextToPlayer)
-            {
-                Debug.Log("THE MONSTER ATTACKS THE PLAYER");
+            //if (nextToPlayer)
+            //{
+               // Debug.Log("THE MONSTER ATTACKS THE PLAYER");
                 Game_Manager.endGame(EndScenario.GAMEOVER);
-            }
+           // }
 
             yield return new WaitForSeconds(5.0f);
         }
