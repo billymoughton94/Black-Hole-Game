@@ -836,7 +836,6 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> parent of 338765f... Revert "Revert ".""
 --- !u!1 &210842993
@@ -965,8 +964,6 @@ CanvasRenderer:
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
 =======
 >>>>>>> parent of 338765f... Revert "Revert ".""
-=======
->>>>>>> parent of 3e80bd8... Inventory revamp
 --- !u!1 &316918738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,7 +3544,6 @@ Transform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 --- !u!1 &1693911118
 =======
@@ -3671,8 +3667,6 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of 1cb78bc... Revert "Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main"
-=======
->>>>>>> parent of 3e80bd8... Inventory revamp
 --- !u!1001 &1824991296
 =======
 --- !u!1001 &79948019896816274
