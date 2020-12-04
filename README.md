@@ -12,4 +12,6 @@ Rock 01 - CrazyTextures - https://assetstore.unity.com/packages/2d/textures-mate
 Grass And Flowers Pack 1 - Vladislav Pochezhertsev - https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-and-flowers-pack-1-17100#content
 Horror and Sci-Fi Ambience LOOPS LITE - Seth O'Dale - https://assetstore.unity.com/packages/audio/ambient/horror-and-sci-fi-ambience-loops-lite-99626
 Monster SFX - 111518 - GWriterStudio - https://assetstore.unity.com/packages/audio/sound-fx/monster-sfx-111518-132868
+Clean Vector Icons - PONETI - https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084#content
+
 ----------- UPDATE USED ASSETS WHEN PUSHING ----------
