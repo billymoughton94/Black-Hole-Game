@@ -818,7 +818,6 @@ CanvasRenderer:
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &210842993
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,8 +858,6 @@ RectTransform:
 >>>>>>> parent of e5c44a0... Minimap added
 =======
 >>>>>>> parent of e5c44a0... Minimap added
-=======
->>>>>>> parent of 3e80bd8... Inventory revamp
 --- !u!1 &316918738
 GameObject:
   m_ObjectHideFlags: 0
