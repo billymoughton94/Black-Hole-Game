@@ -817,7 +817,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 160392395}
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &210842993
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,8 +853,6 @@ RectTransform:
   m_AnchoredPosition: {x: 534.5, y: 513}
   m_SizeDelta: {x: 1117, y: 978}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
->>>>>>> parent of e5c44a0... Minimap added
 =======
 >>>>>>> parent of e5c44a0... Minimap added
 --- !u!1 &316918738
@@ -2284,15 +2281,9 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_IsActive: 0
 --- !u!224 &979745447
 RectTransform:
-=======
-  m_IsActive: 1
---- !u!4 &918251988
-Transform:
->>>>>>> parent of e5c44a0... Minimap added
 =======
   m_IsActive: 1
 --- !u!4 &918251988
@@ -2303,19 +2294,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_GameObject: {fileID: 979745446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
 =======
-=======
->>>>>>> parent of e5c44a0... Minimap added
   m_GameObject: {fileID: 918251987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
 >>>>>>> parent of e5c44a0... Minimap added
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-<<<<<<< HEAD
 <<<<<<< HEAD
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2327,13 +2314,6 @@ Transform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979745448
 MonoBehaviour:
-=======
-  m_Father: {fileID: 72733730}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &918251989
-AudioListener:
->>>>>>> parent of e5c44a0... Minimap added
 =======
   m_Father: {fileID: 72733730}
   m_RootOrder: 0
