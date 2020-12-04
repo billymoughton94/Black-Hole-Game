@@ -73,19 +73,13 @@ public class UI_Controller : MonoBehaviour {
     }
 
     private void updateItemList() {
-        Inventory_Controller inventory = GameObject.Find("Player").GetComponent<Inventory_Controller>();
-        GameObject itemList = transform.Find("InventoryPanel/ItemList").gameObject;
-        const float startY = 150f;
-        const float spacing = -50f;
-        foreach (Transform child in itemList.transform) {
-            Destroy(child.gameObject);
-        }
-
-        int i = 0;
-        foreach (KeyValuePair<String, Item> item in inventory.getItems()) {
-            GameObject go = Instantiate(itemPrefab, transform.position + new Vector3(0, startY + (spacing * i), 0), Quaternion.identity, itemList.transform);
+        GameObject itemList = GameObject.Find("ItemList");
+        Dictionary<String, Item> items = GameObject.Find("Player").GetComponent<Inventory_Controller>().getItems();
+        const float height = 50f;
+        // Create the list of objects to be displayed as items
+        foreach (KeyValuePair<String, Item> item in items) {
+            GameObject go = Instantiate(itemPrefab, itemList.transform.position, Quaternion.identity, itemList.transform);
             go.GetComponent<Item_Controller>().setValues(item.Key, item.Value.getAmount(), item.Value.getUseable());
-            i++;
         }
     }
 
