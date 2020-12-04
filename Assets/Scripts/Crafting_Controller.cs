@@ -14,29 +14,23 @@ public class Crafting_Controller : MonoBehaviour
         recipes = new RecipeController();
     }
 
-    public void craftItem(String name)
-    {
+    public void craftItem(String name) {
         Debug.Log(name);
-        if (!canCraft(name))
-        {
+        if (!canCraft(name)) {
             return;
         }
-        Dictionary<String, int> requirements = recipes.getRecipe(name);
-        foreach (KeyValuePair<String, int> requirement in requirements)
-        {
-            inventory.removeItem(requirement.Key, requirement.Value);
-        }
-        inventory.addItem(name);
-        Debug.Log("Crafted " + name);
+        List<Item> requirements = recipes.getRecipe(name);
+        // foreach (KeyValuePair<String, int> requirement in requirements) {
+        //     inventory.removeItem(requirement.Key, requirement.Value);
+        // }
+        // inventory.addItem(name);
+        // Debug.Log("Crafted " + name);
     }
 
-    private bool canCraft(String name)
-    {
-        Dictionary<String, int> requirements = recipes.getRecipe(name);
-        foreach (KeyValuePair<String, int> requirement in requirements)
-        {
-            if (inventory.getItem(requirement.Key) < requirement.Value)
-            {
+    private bool canCraft(String name) {
+        List<Item> requirements = recipes.getRecipe(name);
+        foreach (var item in requirements) {
+            if (inventory.getItem(item.getName()).getAmount() < item.getAmount()) {
                 Debug.Log("Cannot craft " + name);
                 return false;
             }
@@ -46,24 +40,25 @@ public class Crafting_Controller : MonoBehaviour
 }
 
 
-class RecipeController
-{
-    private Dictionary<String, Dictionary<String, int>> recipeList;
+class RecipeController {
+    private Dictionary<String, Dictionary<Item, List<Item>>> recipeList;
 
-    public RecipeController()
-    {
-        recipeList = new Dictionary<string, Dictionary<String, int>>();
+    public RecipeController() {
+        recipeList = new Dictionary<String, Dictionary<Item, List<Item>>>();
 
         // The recipes to be used in the game
-        recipeList.Add("Antenna", new Dictionary<string, int>() {
-            {"Iron", 10},
-            {"Magnet", 1}
-        });
+        Dictionary<Item, List<Item>> antennaRecipe = new Dictionary<Item, List<Item>>() {
+            {new Item(("Antenna")), new List<Item>() {
+                {new Item("Iron", 10)},
+                {new Item("Magnet", 1)}
+            }}, 
+        };
+
+        recipeList.Add("Antenna", antennaRecipe);
     }
 
-    public Dictionary<String, int> getRecipe(String name)
-    {
-        Debug.Log("recipeList[name]");
-        return recipeList[name];
+    public List<Item> getRecipe(String name) {
+        //return recipeList[new Item(name)];
+        return null;
     }
 }

@@ -14,17 +14,13 @@ public class Game_Manager : MonoBehaviour {
         switch (endScenario) {
             case EndScenario.GAMEOVER:
                 // Display the Defeat panel
-                GameObject.Find("UI").GetComponent<UI_Controller>().showDefeatPanel();
-                unlockCursor();
+                GameObject.Find("UI").GetComponent<UI_Controller>().togglePanel("Defeat");
                 Time.timeScale = 0;
-                Debug.Log("Defeat reached");
                 break;
             case EndScenario.VICTORY:
                 // Display the Victory panel
-                GameObject.Find("UI").GetComponent<UI_Controller>().showVictoryPanel();
-                unlockCursor();
+                GameObject.Find("UI").GetComponent<UI_Controller>().togglePanel("Victory");
                 Time.timeScale = 0;
-                Debug.Log("Victory reached");
                 break;
         }
     }
@@ -41,11 +37,5 @@ public class Game_Manager : MonoBehaviour {
             endGame(EndScenario.VICTORY);
         }
             
-    }
-    
-    // Unlock the cursor to allow menu use
-    private static void unlockCursor() {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 }

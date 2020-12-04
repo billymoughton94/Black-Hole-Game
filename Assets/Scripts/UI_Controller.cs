@@ -9,6 +9,10 @@ public class UI_Controller : MonoBehaviour {
     
     // Dictionary containing the parts and the quantity obtained
     private Dictionary<string, int> parts;
+
+    private GameObject activePanel;
+    [SerializeField]
+    private GameObject itemPrefab;
     
     void Start() {
         // Initialise the parts dictionary and add the initial values
@@ -32,21 +36,55 @@ public class UI_Controller : MonoBehaviour {
         partsList.text = partsListText;
     }
 
-    public void showVictoryPanel() {
-        // Get the victory panel game object and set it to active
-        GameObject VictoryPanel = transform.Find("VictoryPanel").gameObject;
-        VictoryPanel.SetActive(true);
+    public void togglePanel(String name) {
+        if (activePanel is null) {
+            showPanel(name);
+            toggleMouse();
+        } else if (!String.Equals(activePanel.name, name + "Panel")) {
+            hidePanel();
+            showPanel(name);
+        } else {
+            hidePanel();
+            toggleMouse();
+        }
+    }
+    
+    private void showPanel(String name) {
+        activePanel = transform.Find(name + "Panel").gameObject;
+        if (String.Equals(name, "Inventory")) {
+            updateItemList();
+        }
+        activePanel.SetActive(true);
     }
 
-    public void showDefeatPanel() {
-        // Get the defeat panel game object and set it to active
-        GameObject DefeatPanel = transform.Find("DefeatPanel").gameObject;
-        DefeatPanel.SetActive(true);
+    private void hidePanel() {
+        activePanel.SetActive(false);
+        activePanel = null;
+    }
+
+    private void toggleMouse() {
+        if (Cursor.lockState == CursorLockMode.None) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    private void updateItemList() {
+        GameObject itemList = GameObject.Find("ItemList");
+        Dictionary<String, Item> items = GameObject.Find("Player").GetComponent<Inventory_Controller>().getItems();
+        const float height = 50f;
+        // Create the list of objects to be displayed as items
+        foreach (KeyValuePair<String, Item> item in items) {
+            GameObject go = Instantiate(itemPrefab, itemList.transform.position, Quaternion.identity, itemList.transform);
+            go.GetComponent<Item_Controller>().setValues(item.Key, item.Value.getAmount(), item.Value.getUseable());
+        }
     }
 
     public void retryPressed() {
         // Restart the game.
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-
     }
 }
