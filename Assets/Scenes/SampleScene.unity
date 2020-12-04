@@ -299,7 +299,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 59906027}
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &72733726
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,8 +607,6 @@ AudioSource:
 >>>>>>> parent of 1cb78bc... Revert "Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main"
 =======
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
 --- !u!1 &121969721
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,9 +832,6 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
 --- !u!1 &210842993
 =======
 --- !u!1 &199731995
@@ -891,7 +885,6 @@ RectTransform:
   m_AnchoredPosition: {x: 534.5, y: 513}
   m_SizeDelta: {x: 1117, y: 978}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 =======
 >>>>>>> parent of e5c44a0... Minimap added
 =======
@@ -962,8 +955,6 @@ CanvasRenderer:
 >>>>>>> parent of 1cb78bc... Revert "Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main"
 =======
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
 --- !u!1 &316918738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,7 +2484,6 @@ GameObject:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
   m_IsActive: 0
 --- !u!224 &979745447
 RectTransform:
@@ -2522,16 +2512,10 @@ Transform:
 --- !u!224 &979745447
 RectTransform:
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
-  m_IsActive: 0
---- !u!224 &979745447
-RectTransform:
->>>>>>> parent of 338765f... Revert "Revert ".""
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2560,13 +2544,6 @@ RectTransform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-=======
-  m_GameObject: {fileID: 979745446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1141, y: 1.1141, z: 1.1141}
-  m_Children: []
->>>>>>> parent of 338765f... Revert "Revert ".""
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2577,7 +2554,6 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979745448
 MonoBehaviour:
-<<<<<<< HEAD
 =======
   m_Father: {fileID: 72733730}
   m_RootOrder: 0
@@ -2618,8 +2594,6 @@ AudioListener:
 --- !u!114 &979745448
 MonoBehaviour:
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3543,22 +3517,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 --- !u!1 &1693911118
 =======
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
 --- !u!4 &2010635310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6970374425873077916, guid: e897d9eabd970464faacb0e8f1cb80e9, type: 3}
   m_PrefabInstance: {fileID: 1183232100}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2069462832
-<<<<<<< HEAD
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 338765f... Revert "Revert ".""
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3665,15 +3633,11 @@ CanvasRenderer:
   m_GameObject: {fileID: 2100488117}
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> parent of 1cb78bc... Revert "Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main"
 --- !u!1001 &1824991296
 =======
 --- !u!1001 &79948019896816274
 >>>>>>> parent of 9a64be1... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
---- !u!1001 &79948019896816274
->>>>>>> parent of 338765f... Revert "Revert ".""
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
