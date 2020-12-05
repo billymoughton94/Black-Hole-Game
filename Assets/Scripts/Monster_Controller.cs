@@ -11,10 +11,10 @@ public class Monster_Controller : MonoBehaviour {
     private float distanceFromPlayer;
     public float aggroDistance;
     public float attackDistance;
+    public int hitPoints;
 
     private AudioSource audioSource;
     public AudioClip[] audioQueue;
-    IEnumerator attack;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,73 +28,62 @@ public class Monster_Controller : MonoBehaviour {
 
     private void Update()
     {
-        chasePlayer();
-        
+        monsterInteractions(); 
     }
 
-    private void chasePlayer()
+    private void monsterInteractions()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+        bool nextToPlayer = distanceFromPlayer <= attackDistance;
+        bool inAggroRange = distanceFromPlayer <= aggroDistance;
+        AnimatorStateInfo state = monsterAnim.GetCurrentAnimatorStateInfo(0);
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
-        if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
+        if (inAggroRange && !nextToPlayer)
         {
             nav.SetDestination(player.transform.position);
-            if (monsterAnim.GetFloat("InputZ") != 0.25f)
-                monsterAnim.SetFloat("InputZ", 0.25f);
+            if(state.IsName("Idle"))
+                monsterAnim.SetBool("IsChasingPlayer", true); // START RUN ANIMATION
         }
 
         // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
-        if (distanceFromPlayer > aggroDistance || distanceFromPlayer <= attackDistance)
-        {
-            if (monsterAnim.GetFloat("InputZ") != 0.0f)
-                monsterAnim.SetFloat("InputZ", 0.0f);
-        }
-    }
+        if ((!inAggroRange || nextToPlayer) && (state.IsName("Run")))
+            monsterAnim.SetBool("IsChasingPlayer", false); // START IDLE ANIMATION
 
-    // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
-    private void OnTriggerEnter(Collider collision)
+        if (nextToPlayer && !monsterAnim.GetBool("IsNextToPlayer")) // START ATTACK ANIMATION
+            monsterAnim.SetBool("IsNextToPlayer", true);
+
+        if (!nextToPlayer && monsterAnim.GetBool("IsNextToPlayer")) // END ATTACK ANIMATION
+            monsterAnim.SetBool("IsNextToPlayer", false);
+    }
+    
+    // WHEN A HIT BY THE MONSTER IS DETECTED
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.tag == "Player")
+        if (other.tag == "Player")
         {
-            Debug.Log("MONSTER IN ATTACK RANGE");
-
-            attack = attackPlayer();
-            StartCoroutine(attack);
+            Debug.Log("HIT DETECTED");
+            //TODO: DEPLETE PLAYER'S HEALTH BY 1 HITPOINT (0 HP = Game_Manager.endGame(EndScenario.GAMEOVER))
         }
     }
 
-    // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
-    private void OnTriggerExit(Collider collision)
+    public void takeDamage()
     {
-        if (collision.tag == "Player")
+        hitPoints--;
+        if (hitPoints > 0)
         {
-            Debug.Log("LEAVING MONSTER ATTACK RANGE");
-            StopCoroutine(attack);
-            monsterAnim.SetBool("NextToPlayer", false);
+            monsterAnim.SetTrigger("HasTakenDamage");
+        }
+
+
+        if (hitPoints <= 0)
+        {
+            //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
+            monsterAnim.SetTrigger("HasDied");
         }
     }
 
 
-
-    // ATTACKS PLAYER IF NEXT TO THEM
-    IEnumerator attackPlayer()
-    {
-        while (true)
-        {
-            if (monsterAnim.GetBool("NextToPlayer") != true)
-            {
-                monsterAnim.SetBool("NextToPlayer", true);
-                yield return new WaitForSeconds(2);
-                monsterAnim.SetBool("NextToPlayer", false);
-            }
-            yield return new WaitForSeconds(2.0f);
-            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION. IF HIT, GAME OVER
-            Debug.Log("THE MONSTER ATTACKS THE PLAYER");
-            Game_Manager.endGame(EndScenario.GAMEOVER);
-            yield return new WaitForSeconds(5.0f);
-        }
-    }
 
     IEnumerator playMonsterAudio()
     {
