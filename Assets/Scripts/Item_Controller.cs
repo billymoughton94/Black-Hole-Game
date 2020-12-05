@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item_Controller : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler {
+public class Item_Controller : MonoBehaviour {
 
     private string name;
     private int amount;
     private bool useable;
 
-    [SerializeField]
     private TextMeshProUGUI UIText;
-    [SerializeField]
     private GameObject UIButton;
-    [SerializeField]
-    private GameObject desciptionPrefab;
 
-    private GameObject descriptionPanel;
+    void Start() {
+        UIText = transform. GetComponentInChildren<TextMeshProUGUI>();
+        UIButton = GameObject.Find("Button");
+    }
 
     public void setValues(string name, int amount, bool useable) {
         this.name = name;
@@ -30,14 +28,5 @@ public class Item_Controller : MonoBehaviour, IPointerEnterHandler ,IPointerExit
     private void updateItem() {
         UIText.text = name + ": " + amount;
         UIButton.SetActive(useable);
-    }
-    
-    public void OnPointerEnter(PointerEventData data) {
-        descriptionPanel = Instantiate(desciptionPrefab, Input.mousePosition + new Vector3(125f, 50f, 0), Quaternion.identity, transform);
-        descriptionPanel.GetComponent<Description_Controller>().setText(name);
-    }
-
-    public void OnPointerExit(PointerEventData data) {
-        Destroy(descriptionPanel);	
     }
 }
