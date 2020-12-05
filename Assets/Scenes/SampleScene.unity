@@ -3457,7 +3457,6 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> parent of ffb2813... Revert "Gun Model"
     - target: {fileID: 9005097030909906778, guid: cf1286e961dbfde45ab58df764351a5f, type: 3}
@@ -3473,8 +3472,6 @@ PrefabInstance:
 >>>>>>> parent of ffb2813... Revert "Gun Model"
 =======
 >>>>>>> parent of d10b878... Gun Model
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     - target: {fileID: 9005097030909906781, guid: cf1286e961dbfde45ab58df764351a5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 710
@@ -3526,7 +3523,6 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_RemovedComponents: []
 =======
     m_RemovedComponents:
@@ -3536,8 +3532,6 @@ PrefabInstance:
 =======
 =======
 >>>>>>> parent of 3221baa... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     m_RemovedComponents: []
 >>>>>>> parent of 9cef701... Inventory  v3
   m_SourcePrefab: {fileID: 100100000, guid: cf1286e961dbfde45ab58df764351a5f, type: 3}
