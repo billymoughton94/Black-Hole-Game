@@ -28,29 +28,18 @@ public class Monster_Controller : MonoBehaviour {
 
     private void Update()
     {
-<<<<<<< HEAD
         chasePlayer();
         
-=======
-        monsterInteractions(); 
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     }
 
     private void chasePlayer()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
-<<<<<<< HEAD
-=======
-        bool nextToPlayer = distanceFromPlayer <= attackDistance;
-        bool inAggroRange = distanceFromPlayer <= aggroDistance;
-        AnimatorStateInfo state = monsterAnim.GetCurrentAnimatorStateInfo(0);
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
         if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
         {
             nav.SetDestination(player.transform.position);
-<<<<<<< HEAD
             if (monsterAnim.GetFloat("InputZ") != 0.25f)
                 monsterAnim.SetFloat("InputZ", 0.25f);
         }
@@ -61,21 +50,6 @@ public class Monster_Controller : MonoBehaviour {
             if (monsterAnim.GetFloat("InputZ") != 0.0f)
                 monsterAnim.SetFloat("InputZ", 0.0f);
         }
-=======
-            if(state.IsName("Idle"))
-                monsterAnim.SetBool("IsChasingPlayer", true); // START RUN ANIMATION
-        }
-
-        // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
-        if ((!inAggroRange || nextToPlayer) && (state.IsName("Run")))
-            monsterAnim.SetBool("IsChasingPlayer", false); // START IDLE ANIMATION
-
-        if (nextToPlayer && !monsterAnim.GetBool("IsNextToPlayer")) // START ATTACK ANIMATION
-            monsterAnim.SetBool("IsNextToPlayer", true);
-
-        if (!nextToPlayer && monsterAnim.GetBool("IsNextToPlayer")) // END ATTACK ANIMATION
-            monsterAnim.SetBool("IsNextToPlayer", false);
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     }
 
     // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
@@ -90,12 +64,8 @@ public class Monster_Controller : MonoBehaviour {
         }
     }
 
-<<<<<<< HEAD
     // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
     private void OnTriggerExit(Collider collision)
-=======
-    public void takeDamage()
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     {
         if (collision.tag == "Player")
         {
@@ -107,7 +77,6 @@ public class Monster_Controller : MonoBehaviour {
 
 
 
-<<<<<<< HEAD
     // ATTACKS PLAYER IF NEXT TO THEM
     IEnumerator attackPlayer()
     {
@@ -124,17 +93,8 @@ public class Monster_Controller : MonoBehaviour {
             Debug.Log("THE MONSTER ATTACKS THE PLAYER");
             Game_Manager.endGame(EndScenario.GAMEOVER);
             yield return new WaitForSeconds(5.0f);
-=======
-
-        if (hitPoints <= 0)
-        {
-            //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
-            monsterAnim.SetTrigger("HasDied");
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
         }
     }
-
-
 
     IEnumerator playMonsterAudio()
     {
