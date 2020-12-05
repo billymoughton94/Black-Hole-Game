@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Monster_Controller : MonoBehaviour {
     Animator monsterAnim;
+    AnimatorStateInfo currentState;
     NavMeshAgent nav;
     private GameObject player;
 
@@ -21,6 +22,7 @@ public class Monster_Controller : MonoBehaviour {
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         monsterAnim = GetComponent<Animator>();
+        currentState = monsterAnim.GetCurrentAnimatorStateInfo(0);
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(playMonsterAudio());
@@ -28,7 +30,16 @@ public class Monster_Controller : MonoBehaviour {
 
     private void Update()
     {
-        monsterInteractions(); 
+        monsterInteractions();
+
+
+        // WILL EVENTUALLY BE CALLED BY THE PLAYER_CONTROLLER CLASS
+        if (Input.GetKeyDown("h"))
+        {
+            takeDamage();
+        }
+
+
     }
 
     private void monsterInteractions()
@@ -36,18 +47,18 @@ public class Monster_Controller : MonoBehaviour {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
         bool nextToPlayer = distanceFromPlayer <= attackDistance;
         bool inAggroRange = distanceFromPlayer <= aggroDistance;
-        AnimatorStateInfo state = monsterAnim.GetCurrentAnimatorStateInfo(0);
+        currentState = monsterAnim.GetCurrentAnimatorStateInfo(0);
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
         if (inAggroRange && !nextToPlayer)
         {
             nav.SetDestination(player.transform.position);
-            if(state.IsName("Idle"))
+            if(currentState.IsName("Idle"))
                 monsterAnim.SetBool("IsChasingPlayer", true); // START RUN ANIMATION
         }
 
         // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
-        if ((!inAggroRange || nextToPlayer) && (state.IsName("Run")))
+        if ((!inAggroRange || nextToPlayer) && (currentState.IsName("Run")))
             monsterAnim.SetBool("IsChasingPlayer", false); // START IDLE ANIMATION
 
         if (nextToPlayer && !monsterAnim.GetBool("IsNextToPlayer")) // START ATTACK ANIMATION
@@ -67,6 +78,7 @@ public class Monster_Controller : MonoBehaviour {
         }
     }
 
+    // if the monster is hit by the player, take damage. Die if health is 0
     public void takeDamage()
     {
         hitPoints--;
@@ -75,15 +87,13 @@ public class Monster_Controller : MonoBehaviour {
             monsterAnim.SetTrigger("HasTakenDamage");
         }
 
-
         if (hitPoints <= 0)
         {
-            //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
             monsterAnim.SetTrigger("HasDied");
+            nav.isStopped = true;
+            StopAllCoroutines();
         }
     }
-
-
 
     IEnumerator playMonsterAudio()
     {
