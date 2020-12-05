@@ -31,6 +31,7 @@ public class Monster_Controller : MonoBehaviour {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         chasePlayer();
         
 =======
@@ -43,11 +44,16 @@ public class Monster_Controller : MonoBehaviour {
 =======
         monsterInteractions(); 
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+        chasePlayer();
+        
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
     }
 
     private void chasePlayer()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -60,11 +66,14 @@ public class Monster_Controller : MonoBehaviour {
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
 =======
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
         if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
         {
             nav.SetDestination(player.transform.position);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -101,12 +110,22 @@ public class Monster_Controller : MonoBehaviour {
         }
 
         // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
+=======
+            if (monsterAnim.GetFloat("InputZ") != 0.25f)
+                monsterAnim.SetFloat("InputZ", 0.25f);
+        }
+
+        // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
         if (distanceFromPlayer > aggroDistance || distanceFromPlayer <= attackDistance)
         {
             if (monsterAnim.GetFloat("InputZ") != 0.0f)
                 monsterAnim.SetFloat("InputZ", 0.0f);
         }
+<<<<<<< HEAD
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
     }
 
     // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
@@ -124,6 +143,7 @@ public class Monster_Controller : MonoBehaviour {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
     private void OnTriggerExit(Collider collision)
 =======
@@ -135,6 +155,10 @@ public class Monster_Controller : MonoBehaviour {
     // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
     private void OnTriggerExit(Collider collision)
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
+=======
+    // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
+    private void OnTriggerExit(Collider collision)
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
     {
         if (collision.tag == "Player")
         {
@@ -145,6 +169,7 @@ public class Monster_Controller : MonoBehaviour {
     }
 
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -169,15 +194,23 @@ public class Monster_Controller : MonoBehaviour {
             yield return new WaitForSeconds(5.0f);
 =======
 
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
 
-        if (hitPoints <= 0)
+    // ATTACKS PLAYER IF NEXT TO THEM
+    IEnumerator attackPlayer()
+    {
+        while (true)
         {
+<<<<<<< HEAD
             //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
             monsterAnim.SetTrigger("HasDied");
 <<<<<<< HEAD
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 =======
         {
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
             if (monsterAnim.GetBool("NextToPlayer") != true)
             {
                 monsterAnim.SetBool("NextToPlayer", true);
@@ -189,9 +222,12 @@ public class Monster_Controller : MonoBehaviour {
             Debug.Log("THE MONSTER ATTACKS THE PLAYER");
             Game_Manager.endGame(EndScenario.GAMEOVER);
             yield return new WaitForSeconds(5.0f);
+<<<<<<< HEAD
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
 =======
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
         }
     }
 

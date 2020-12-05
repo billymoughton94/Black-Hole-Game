@@ -20,6 +20,7 @@ public class Gravity_Controller : MonoBehaviour {
     foreach (Collider collider in Physics.OverlapSphere(transform.position, pullRadius)) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ﻿using UnityEngine;
 
@@ -45,6 +46,8 @@ public class Gravity_Controller : MonoBehaviour {
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 =======
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+>>>>>>> parent of 620bffb... Merge remote-tracking branch 'origin/main' into main
       Vector3 forceDirection = transform.position - collider.transform.position;
       // Apply the force to the object
       if (collider.GetComponent<Rigidbody>() != null)
