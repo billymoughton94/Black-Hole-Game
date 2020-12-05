@@ -18,7 +18,6 @@ public class Gravity_Controller : MonoBehaviour {
     pullRadius = pullRadius + growRate * Time.fixedDeltaTime;
     // Loop through the objects within the radius
     foreach (Collider collider in Physics.OverlapSphere(transform.position, pullRadius)) {
-<<<<<<< HEAD
 =======
 ﻿using UnityEngine;
 
@@ -40,8 +39,6 @@ public class Gravity_Controller : MonoBehaviour {
     // Loop through the objects within the radius
     foreach (Collider collider in Physics.OverlapSphere(transform.position, pullRadius)) {
 >>>>>>> parent of 3221baa... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
       Vector3 forceDirection = transform.position - collider.transform.position;
       // Apply the force to the object
       if (collider.GetComponent<Rigidbody>() != null)
