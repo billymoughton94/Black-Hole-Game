@@ -11,6 +11,7 @@ public class Inventory_Controller : MonoBehaviour {
         // For testing purposes adding a bunch of items
         items.Add("Iron", new Item("Iron", 20, false));
         items.Add("Magnet", new Item("Magnet", 2, false));
+        items.Add("Food", new Item("Food", 2, true));
     }
 
     public void addItem(Item item) {
@@ -21,11 +22,11 @@ public class Inventory_Controller : MonoBehaviour {
         }
     }
 
-    public void removeItem(String item, int amount) {
-        if (items[item].getAmount() <= 0) {
-            items.Remove(item);
+    public void removeItem(Item item) {
+        items[item.getName()].addAmount(-item.getAmount());
+        if (items[item.getName()].getAmount() <= 0) {
+            items.Remove(item.getName());
         }
-        items[item].addAmount(amount);
     }
 
     public Item getItem(String name) {
