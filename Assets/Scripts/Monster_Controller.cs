@@ -30,7 +30,6 @@ public class Monster_Controller : MonoBehaviour {
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
         chasePlayer();
         
 =======
@@ -40,9 +39,6 @@ public class Monster_Controller : MonoBehaviour {
         chasePlayer();
         
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
-=======
-        monsterInteractions(); 
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     }
 
     private void chasePlayer()
@@ -54,18 +50,14 @@ public class Monster_Controller : MonoBehaviour {
         bool nextToPlayer = distanceFromPlayer <= attackDistance;
         bool inAggroRange = distanceFromPlayer <= aggroDistance;
         AnimatorStateInfo state = monsterAnim.GetCurrentAnimatorStateInfo(0);
-<<<<<<< HEAD
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 =======
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
         if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
         {
             nav.SetDestination(player.transform.position);
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             if (monsterAnim.GetFloat("InputZ") != 0.25f)
@@ -79,8 +71,6 @@ public class Monster_Controller : MonoBehaviour {
                 monsterAnim.SetFloat("InputZ", 0.0f);
         }
 =======
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
             if(state.IsName("Idle"))
                 monsterAnim.SetBool("IsChasingPlayer", true); // START RUN ANIMATION
         }
@@ -123,12 +113,9 @@ public class Monster_Controller : MonoBehaviour {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
     private void OnTriggerExit(Collider collision)
 =======
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
     public void takeDamage()
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 =======
@@ -169,12 +156,10 @@ public class Monster_Controller : MonoBehaviour {
             yield return new WaitForSeconds(5.0f);
 =======
 
-
         if (hitPoints <= 0)
         {
             //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
             monsterAnim.SetTrigger("HasDied");
-<<<<<<< HEAD
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
 =======
         {
@@ -190,12 +175,8 @@ public class Monster_Controller : MonoBehaviour {
             Game_Manager.endGame(EndScenario.GAMEOVER);
             yield return new WaitForSeconds(5.0f);
 >>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
-=======
->>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
         }
     }
-
-
 
     IEnumerator playMonsterAudio()
     {
