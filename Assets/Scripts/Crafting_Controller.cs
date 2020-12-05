@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Crafting_Controller : MonoBehaviour
@@ -13,29 +14,20 @@ public class Crafting_Controller : MonoBehaviour
         inventory = GetComponent<Inventory_Controller>();
         recipes = new RecipeController();
     }
+    
 
-    public void craftItem(String name) {
-        Debug.Log(name);
-        if (!canCraft(name)) {
-            return;
-        }
-        List<Item> requirements = recipes.getRecipe(name);
-        // foreach (KeyValuePair<String, int> requirement in requirements) {
-        //     inventory.removeItem(requirement.Key, requirement.Value);
-        // }
-        // inventory.addItem(name);
-        // Debug.Log("Crafted " + name);
-    }
-
-    private bool canCraft(String name) {
-        List<Item> requirements = recipes.getRecipe(name);
-        foreach (var item in requirements) {
+    private void craftItem(String name) {
+        Dictionary<Item, List<Item>> requirements = recipes.getRecipe(name);
+        foreach (var item in requirements[requirements.Keys.First()]) {
             if (inventory.getItem(item.getName()).getAmount() < item.getAmount()) {
                 Debug.Log("Cannot craft " + name);
-                return false;
+                return;
             }
         }
-        return true;
+        foreach (var item in requirements[requirements.Keys.First()]) {
+            inventory.removeItem(item);
+        }
+        inventory.addItem(requirements.Keys.First());
     }
 }
 
@@ -57,8 +49,7 @@ class RecipeController {
         recipeList.Add("Antenna", antennaRecipe);
     }
 
-    public List<Item> getRecipe(String name) {
-        //return recipeList[new Item(name)];
-        return null;
+    public Dictionary<Item, List<Item>> getRecipe(String name) {
+        return recipeList[name];
     }
 }
