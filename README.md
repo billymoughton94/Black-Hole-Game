@@ -3,13 +3,8 @@ Video game designed in Unity as part of the Multi Platform Game Development modu
 
 Free Assets used from the Unity Asset Store:
 
-<<<<<<< HEAD
 3D Game Kit - Environment Pack - Unity Technologies - https://assetstore.unity.com/packages/3d/3d-game-kit-environment-pack-135167
 Ancient Ruins in the desert - Part1 - NEKCOM Entertainment - https://assetstore.unity.com/packages/3d/environments/ancient-ruins-in-the-desert-part1-19175
-=======
-3D Game Kit - Environment Pack - Unity Technologies,
-Ancient Ruins in the desert - Part1 - NEKCOM Entertainment,
->>>>>>> parent of 3221baa... Merge branch 'main' of https://github.com/billymoughton94/Black-Hole-Game into main
 Space Cruiser 1 - Gamer Squid,
 Starfield Skybox - PULSAR BYTES,
 Character Monsters X - Vadim Ziambetov,
