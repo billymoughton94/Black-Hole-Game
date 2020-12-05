@@ -15,7 +15,7 @@ public class Black_Hole_Manager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         startScale = gameObject.transform.localScale;
-        const float MAX_SIZE = 1000f; // TOO BIG AND IT WILL CAUSE STUTTER
+        const float MAX_SIZE = 3000f;
         targetScale = new Vector3(MAX_SIZE, MAX_SIZE, MAX_SIZE);
     }
 
