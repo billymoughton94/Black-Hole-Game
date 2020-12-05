@@ -28,7 +28,9 @@ public class Monster_Controller : MonoBehaviour {
 
     private void Update()
     {
-        monsterInteractions(); 
+        monsterInteractions();
+        if (Input.GetKeyDown("h"))
+            takeDamage();
     }
 
     private void monsterInteractions()
