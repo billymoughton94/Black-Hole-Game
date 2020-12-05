@@ -29,27 +29,36 @@ public class Monster_Controller : MonoBehaviour {
     private void Update()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         chasePlayer();
         
 =======
         monsterInteractions(); 
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+        chasePlayer();
+        
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
     }
 
     private void chasePlayer()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         bool nextToPlayer = distanceFromPlayer <= attackDistance;
         bool inAggroRange = distanceFromPlayer <= aggroDistance;
         AnimatorStateInfo state = monsterAnim.GetCurrentAnimatorStateInfo(0);
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
         if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
         {
             nav.SetDestination(player.transform.position);
+<<<<<<< HEAD
 <<<<<<< HEAD
             if (monsterAnim.GetFloat("InputZ") != 0.25f)
                 monsterAnim.SetFloat("InputZ", 0.25f);
@@ -76,6 +85,18 @@ public class Monster_Controller : MonoBehaviour {
         if (!nextToPlayer && monsterAnim.GetBool("IsNextToPlayer")) // END ATTACK ANIMATION
             monsterAnim.SetBool("IsNextToPlayer", false);
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+            if (monsterAnim.GetFloat("InputZ") != 0.25f)
+                monsterAnim.SetFloat("InputZ", 0.25f);
+        }
+
+        // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
+        if (distanceFromPlayer > aggroDistance || distanceFromPlayer <= attackDistance)
+        {
+            if (monsterAnim.GetFloat("InputZ") != 0.0f)
+                monsterAnim.SetFloat("InputZ", 0.0f);
+        }
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
     }
 
     // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
@@ -91,11 +112,16 @@ public class Monster_Controller : MonoBehaviour {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
     private void OnTriggerExit(Collider collision)
 =======
     public void takeDamage()
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+    // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
+    private void OnTriggerExit(Collider collision)
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
     {
         if (collision.tag == "Player")
         {
@@ -108,10 +134,14 @@ public class Monster_Controller : MonoBehaviour {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
     // ATTACKS PLAYER IF NEXT TO THEM
     IEnumerator attackPlayer()
     {
         while (true)
+<<<<<<< HEAD
         {
             if (monsterAnim.GetBool("NextToPlayer") != true)
             {
@@ -131,10 +161,22 @@ public class Monster_Controller : MonoBehaviour {
             //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
             monsterAnim.SetTrigger("HasDied");
 >>>>>>> parent of 275267b... Monster Animation and Black Hole Edits
+=======
+        {
+            if (monsterAnim.GetBool("NextToPlayer") != true)
+            {
+                monsterAnim.SetBool("NextToPlayer", true);
+                yield return new WaitForSeconds(2);
+                monsterAnim.SetBool("NextToPlayer", false);
+            }
+            yield return new WaitForSeconds(2.0f);
+            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION. IF HIT, GAME OVER
+            Debug.Log("THE MONSTER ATTACKS THE PLAYER");
+            Game_Manager.endGame(EndScenario.GAMEOVER);
+            yield return new WaitForSeconds(5.0f);
+>>>>>>> parent of 215029d... Monster Animations and Hit Detection Updated
         }
     }
-
-
 
     IEnumerator playMonsterAudio()
     {
