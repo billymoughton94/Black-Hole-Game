@@ -1461,6 +1461,7 @@ GameObject:
   - component: {fileID: 8366741113148549092}
   - component: {fileID: -450721547108779719}
   - component: {fileID: 6117462150200784396}
+  - component: {fileID: 5384402531249762969}
   m_Layer: 0
   m_Name: Monster_Prefab
   m_TagString: Monster
@@ -1646,6 +1647,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &5384402531249762969
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8352389140415175077
 GameObject:
   m_ObjectHideFlags: 0

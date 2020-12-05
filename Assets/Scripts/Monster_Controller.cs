@@ -11,7 +11,7 @@ public class Monster_Controller : MonoBehaviour {
     private float distanceFromPlayer;
     public float aggroDistance;
     public float attackDistance;
-    public int hitPoints;
+    public float hitPoints = 50f;
 
     private AudioSource audioSource;
     public AudioClip[] audioQueue;
@@ -29,8 +29,8 @@ public class Monster_Controller : MonoBehaviour {
     private void Update()
     {
         monsterInteractions();
-        if (Input.GetKeyDown("h"))
-            takeDamage();
+      //  if (Input.GetKeyDown("h"))
+        //    takeDamage();
     }
 
     private void monsterInteractions()
@@ -69,9 +69,10 @@ public class Monster_Controller : MonoBehaviour {
         }
     }
 
-    public void takeDamage()
+    public void takeDamage(float amount)
     {
-        hitPoints--;
+        Debug.Log("I'm here");
+        hitPoints -=amount;
         if (hitPoints > 0)
         {
             monsterAnim.SetTrigger("HasTakenDamage");
