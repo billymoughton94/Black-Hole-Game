@@ -5,22 +5,24 @@ using UnityEngine.AI;
 
 public class Monster_Controller : MonoBehaviour {
     Animator monsterAnim;
+    AnimatorStateInfo currentState;
     NavMeshAgent nav;
     private GameObject player;
 
     private float distanceFromPlayer;
     public float aggroDistance;
     public float attackDistance;
+    public int hitPoints;
 
     private AudioSource audioSource;
     public AudioClip[] audioQueue;
-    IEnumerator attack;
 
     // Start is called before the first frame update
     void Start() {
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         monsterAnim = GetComponent<Animator>();
+        currentState = monsterAnim.GetCurrentAnimatorStateInfo(0);
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(playMonsterAudio());
@@ -28,71 +30,68 @@ public class Monster_Controller : MonoBehaviour {
 
     private void Update()
     {
-        chasePlayer();
-        
+        monsterInteractions();
+
+
+        // WILL EVENTUALLY BE CALLED BY THE PLAYER_CONTROLLER CLASS
+        if (Input.GetKeyDown("h"))
+        {
+            takeDamage();
+        }
+
+
     }
 
-    private void chasePlayer()
+    private void monsterInteractions()
     {
         distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+        bool nextToPlayer = distanceFromPlayer <= attackDistance;
+        bool inAggroRange = distanceFromPlayer <= aggroDistance;
+        currentState = monsterAnim.GetCurrentAnimatorStateInfo(0);
 
         // IF PLAYER IS WITHIN AGRRO RANGE OF MONSTER AND NOT NEXT TO THE MONSTER, MONSTER STARTS TO CHASE PLAYER
-        if (distanceFromPlayer <= aggroDistance && distanceFromPlayer > attackDistance)
+        if (inAggroRange && !nextToPlayer)
         {
             nav.SetDestination(player.transform.position);
-            if (monsterAnim.GetFloat("InputZ") != 0.25f)
-                monsterAnim.SetFloat("InputZ", 0.25f);
+            if(currentState.IsName("Idle"))
+                monsterAnim.SetBool("IsChasingPlayer", true); // START RUN ANIMATION
         }
 
         // IF MONSTER IS TOO FAR FROM PLAYER OR RIGHT NEXT TO PLAYER, STOP CHASING
-        if (distanceFromPlayer > aggroDistance || distanceFromPlayer <= attackDistance)
+        if ((!inAggroRange || nextToPlayer) && (currentState.IsName("Run")))
+            monsterAnim.SetBool("IsChasingPlayer", false); // START IDLE ANIMATION
+
+        if (nextToPlayer && !monsterAnim.GetBool("IsNextToPlayer")) // START ATTACK ANIMATION
+            monsterAnim.SetBool("IsNextToPlayer", true);
+
+        if (!nextToPlayer && monsterAnim.GetBool("IsNextToPlayer")) // END ATTACK ANIMATION
+            monsterAnim.SetBool("IsNextToPlayer", false);
+    }
+    
+    // WHEN A HIT BY THE MONSTER IS DETECTED
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
         {
-            if (monsterAnim.GetFloat("InputZ") != 0.0f)
-                monsterAnim.SetFloat("InputZ", 0.0f);
+            Debug.Log("HIT DETECTED");
+            //TODO: DEPLETE PLAYER'S HEALTH BY 1 HITPOINT (0 HP = Game_Manager.endGame(EndScenario.GAMEOVER))
         }
     }
 
-    // BEGINS TO ATTACK WHEN PLAYER COMES WITHIN RANGE
-    private void OnTriggerEnter(Collider collision)
+    // if the monster is hit by the player, take damage. Die if health is 0
+    public void takeDamage()
     {
-        if (collision.tag == "Player")
+        hitPoints--;
+        if (hitPoints > 0)
         {
-            Debug.Log("MONSTER IN ATTACK RANGE");
-
-            attack = attackPlayer();
-            StartCoroutine(attack);
+            monsterAnim.SetTrigger("HasTakenDamage");
         }
-    }
 
-    // STOPS ATTACKING AND CONTINUES TO PURSUE PLAYER WHEN OUTSIDE RANGE
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.tag == "Player")
+        if (hitPoints <= 0)
         {
-            Debug.Log("LEAVING MONSTER ATTACK RANGE");
-            StopCoroutine(attack);
-            monsterAnim.SetBool("NextToPlayer", false);
-        }
-    }
-
-
-
-    // ATTACKS PLAYER IF NEXT TO THEM
-    IEnumerator attackPlayer()
-    {
-        while (true)
-        {
-            if (monsterAnim.GetBool("NextToPlayer") != true)
-            {
-                monsterAnim.SetBool("NextToPlayer", true);
-                yield return new WaitForSeconds(2);
-                monsterAnim.SetBool("NextToPlayer", false);
-            }
-            yield return new WaitForSeconds(2.0f);
-            // DOUBLE CHECKS THE ATTACK RANGE AFTER FIXED UPDATE BEFORE APPLYING HITPOINT DEDUCTION. IF HIT, GAME OVER
-            Debug.Log("THE MONSTER ATTACKS THE PLAYER");
-            Game_Manager.endGame(EndScenario.GAMEOVER);
-            yield return new WaitForSeconds(5.0f);
+            monsterAnim.SetTrigger("HasDied");
+            nav.isStopped = true;
+            StopAllCoroutines();
         }
     }
 
