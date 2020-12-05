@@ -3,11 +3,11 @@ Video game designed in Unity as part of the Multi Platform Game Development modu
 
 Free Assets used from the Unity Asset Store:
 
-3D Game Kit - Environment Pack - Unity Technologies,
-Ancient Ruins in the desert - Part1 - NEKCOM Entertainment,
-Space Cruiser 1 - Gamer Squid,
-Starfield Skybox - PULSAR BYTES,
-Character Monsters X - Vadim Ziambetov,
+3D Game Kit - Environment Pack - Unity Technologies - https://assetstore.unity.com/packages/3d/3d-game-kit-environment-pack-135167
+Ancient Ruins in the desert - Part1 - NEKCOM Entertainment - https://assetstore.unity.com/packages/3d/environments/ancient-ruins-in-the-desert-part1-19175
+Space Cruiser 1 - Gamer Squid - https://assetstore.unity.com/packages/3d/vehicles/air/space-cruiser-1-124172
+Starfield Skybox - PULSAR BYTES - https://assetstore.unity.com/packages/2d/textures-materials/sky/starfield-skybox-92717
+Character Monsters X - Vadim Ziambetov - https://assetstore.unity.com/packages/3d/characters/creatures/character-monsters-x-89243
 Rock 01 - CrazyTextures - https://assetstore.unity.com/packages/2d/textures-materials/stone/rock-01-28673
 Grass And Flowers Pack 1 - Vladislav Pochezhertsev - https://assetstore.unity.com/packages/2d/textures-materials/nature/grass-and-flowers-pack-1-17100#content
 Horror and Sci-Fi Ambience LOOPS LITE - Seth O'Dale - https://assetstore.unity.com/packages/audio/ambient/horror-and-sci-fi-ambience-loops-lite-99626
