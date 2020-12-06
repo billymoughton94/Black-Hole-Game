@@ -6,28 +6,39 @@ public class Inventory_Controller : MonoBehaviour {
 
     private Dictionary<String, Item> items;
 
+    // Initialise the GameObjectt
     void Start() {
         items = new Dictionary<string, Item>();
         // For testing purposes adding a bunch of items
         items.Add("Iron", new Item("Iron", 20, false));
         items.Add("Magnet", new Item("Magnet", 2, false));
-        items.Add("Food", new Item("Food", 2, true));
+        items.Add("Monster Meat", new Item("Food", 2, true));
     }
 
+    
     public void addItem(Item item) {
+        // Check to see if the item already exists in player inventory
         if (items.ContainsKey(item.getName())) {
+            // If it does, add to the amount value held in the item object
             items[item.getName()].addAmount(item.getAmount());
         } else {
+            // If it does not, add a new Item object to the inventory
             items.Add(item.getName(), item);
         }
     }
 
     public void removeItem(Item item) {
+        // Subtract from the amount value in the item object
         items[item.getName()].addAmount(-item.getAmount());
+        // If amount reaches 0 or below, remove it from the inventory
         if (items[item.getName()].getAmount() <= 0) {
             items.Remove(item.getName());
         }
+        // Update the UI
+        UI_Controller UI = GameObject.Find("UI").GetComponent<UI_Controller>();
+        UI.updateUI();
     }
+    
 
     public Item getItem(String name) {
         if (items.ContainsKey(name)) {

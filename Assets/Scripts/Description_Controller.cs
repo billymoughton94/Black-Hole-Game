@@ -16,7 +16,9 @@ public class Description_Controller : MonoBehaviour {
         itemDescription = new Dictionary<string, string>();
         itemDescription.Add("Iron", "Used for crafting");
         itemDescription.Add("Magnet", "Used for crafting");
-        itemDescription.Add("Food", "Can be eaten to restore hunger");
+        itemDescription.Add("Antenna", "Useful for navigating the skies. A key item in repairing the ship.");
+        itemDescription.Add("Food", "Can be eaten to restore hunger.");
+        itemDescription.Add("Monster Meat", "A questionable choice of food. Restores 20 hunger.");
     }
     
     void Update() {

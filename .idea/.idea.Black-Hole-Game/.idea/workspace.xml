@@ -20,9 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a950e8d-c288-401b-8a60-a2df1656d0c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Recipe.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Recipe.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Recipe_Controller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Recipe_Controller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Survival_Controller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Survival_Controller.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Black-Hole-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Item.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Crafting_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Crafting_Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Description_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Description_Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory_Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item_Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI_Controller.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +53,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Monster_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Game_Manager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Item_Controller.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Survival_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Recipe_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Description_Controller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Crafting_Controller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Inventory_Controller.cs" />
       </list>
     </option>
   </component>
@@ -57,6 +72,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -87,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607196111213</updated>
-      <workItem from="1607196122314" duration="624000" />
+      <workItem from="1607196122314" duration="20714000" />
     </task>
     <servers />
   </component>
@@ -97,19 +113,28 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="616" y="243" key="run.anything.popup" timestamp="1607083745635">
+    <state x="616" y="243" key="run.anything.popup" timestamp="1607283738648">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1607083745635" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1607011089137">
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1607283738648" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1607292250174">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1607011089137" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1607292250174" />
   </component>
 </project>

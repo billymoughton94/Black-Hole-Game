@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -11,8 +12,14 @@ public class UI_Controller : MonoBehaviour {
     private Dictionary<string, int> parts;
 
     private GameObject activePanel;
+    [SerializeField] 
+    private GameObject player;
     [SerializeField]
     private GameObject itemPrefab;
+    [SerializeField]
+    private GameObject recipePrefab;
+    [SerializeField] 
+    private TextMeshProUGUI playerStatsUI;
     
     void Start() {
         // Initialise the parts dictionary and add the initial values
@@ -20,6 +27,15 @@ public class UI_Controller : MonoBehaviour {
         parts.Add("Antenna", 0);
         parts.Add("Ship Body", 0);
         parts.Add("Fuel Containers", 0);
+    }
+
+    private void Update() {
+        updatePlayerStats();
+    }
+
+    public void updateUI() {
+        updateItemList();
+        updateRecipeList();
     }
 
     public void updatePartsList(GameObject item) {
@@ -34,6 +50,11 @@ public class UI_Controller : MonoBehaviour {
         }
         // Set the text
         partsList.text = partsListText;
+    }
+
+    private void updatePlayerStats() {
+        Survival_Controller survival = player.GetComponent<Survival_Controller>();
+        playerStatsUI.text = "Health: " + survival.getHealth() + "\n" + "Hunger: " + survival.getHunger();
     }
 
     public void togglePanel(String name) {
@@ -51,8 +72,8 @@ public class UI_Controller : MonoBehaviour {
     
     private void showPanel(String name) {
         activePanel = transform.Find(name + "Panel").gameObject;
-        if (String.Equals(name, "Inventory")) {
-            updateItemList();
+        if (String.Equals(name, "Inventory") || String.Equals(name, "Crafting")) {
+            updateUI();
         }
         activePanel.SetActive(true);
     }
@@ -73,7 +94,7 @@ public class UI_Controller : MonoBehaviour {
     }
 
     private void updateItemList() {
-        Inventory_Controller inventory = GameObject.Find("Player").GetComponent<Inventory_Controller>();
+        Inventory_Controller inventory = player.GetComponent<Inventory_Controller>();
         GameObject itemList = transform.Find("InventoryPanel/ItemList").gameObject;
         const float startY = 150f;
         const float spacing = -50f;
@@ -88,6 +109,25 @@ public class UI_Controller : MonoBehaviour {
             i++;
         }
     }
+    
+    private void updateRecipeList() {
+        Crafting_Controller crafting = player.GetComponent<Crafting_Controller>();
+        GameObject recipeList = transform.Find("CraftingPanel/RecipeList").gameObject;
+        const float startY = 150f;
+        const float spacing = -50f;
+        foreach (Transform child in recipeList.transform) {
+            Destroy(child.gameObject);
+        }
+
+        int i = 0;
+        foreach (KeyValuePair<String, Dictionary<Item, List<Item>>> recipe in crafting.getRecipes()) {
+            GameObject go = Instantiate(recipePrefab, transform.position + new Vector3(0, startY + (spacing * i), 0), Quaternion.identity, recipeList.transform);
+            go.GetComponent<Recipe_Controller>().setValues(recipe.Key, recipe.Value.Values.First());
+            i++;
+        }
+    }
+    
+    
 
     public void retryPressed() {
         // Restart the game.

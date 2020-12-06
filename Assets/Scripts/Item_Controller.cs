@@ -40,4 +40,31 @@ public class Item_Controller : MonoBehaviour, IPointerEnterHandler ,IPointerExit
     public void OnPointerExit(PointerEventData data) {
         Destroy(descriptionPanel);	
     }
+
+
+    public void useItem() {
+        GameObject player = GameObject.Find("Player");
+        Survival_Controller survival =player.GetComponent<Survival_Controller>();
+        Inventory_Controller inventory = player.GetComponent<Inventory_Controller>();
+        switch (name) {
+            case "Monster Meat":
+                int hungerValue = 20;
+                survival.restoreHunger(hungerValue);
+                inventory.removeItem(new Item("Monster Meat"));
+                break;
+            case "Health Pack":
+                int healthValue = 10;
+                survival.changeHealth(healthValue);
+                inventory.removeItem(new Item("Health Pack"));
+                break;
+            default:
+                Debug.Log("Item not recognised");
+                break;
+        }
+    }
+
+
+
+
+
 }
