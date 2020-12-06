@@ -211,6 +211,9 @@ MonoBehaviour:
   playerCamera: {fileID: 2801154367301881672}
   mouseSensitivity: 3.5
   walkSpeed: 15
+  runSpeed: 21.13
+  runBuildUp: 4
+  movementSpeed: 10.5
   gravity: -13
   moveSmoothTime: 0.3
   jumpFallOff:
@@ -239,7 +242,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpMultiplier: 10
   jumpKey: 32
+  runKey: 304
   lockCursor: 1
+  heavyParent: {fileID: 2801154367938453391}
 --- !u!54 &2801154366790479622
 Rigidbody:
   m_ObjectHideFlags: 0

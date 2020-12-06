@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 8495359123359173020}
   - component: {fileID: 8742015436479057653}
   - component: {fileID: 3552463348121854795}
-  - component: {fileID: 3591616356527345960}
   - component: {fileID: 1778748468}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Black Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +52,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6585258518445179971}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -111,21 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 500
---- !u!114 &3591616356527345960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6585258518445179971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c43ab6912718442af9b1015c0dcd88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pullRadius: 500
-  pullForce: 1
-  growRate: 20
+  pullForce: 0.05
 --- !u!54 &1778748468
 Rigidbody:
   m_ObjectHideFlags: 0

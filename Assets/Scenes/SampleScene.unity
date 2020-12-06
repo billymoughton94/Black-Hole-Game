@@ -3195,6 +3195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2801154366141556909, guid: 36cd6aa47d237534fb877281dedde0b2, type: 3}
+      propertyPath: far clip plane
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 2801154366790479616, guid: 36cd6aa47d237534fb877281dedde0b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 710
@@ -3449,13 +3453,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Hole
       objectReference: {fileID: 0}
-    - target: {fileID: 6585258518445179971, guid: df79e7b65a5f63f47b6b4209eb6a47c2, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7042132553732653646, guid: df79e7b65a5f63f47b6b4209eb6a47c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 518
       objectReference: {fileID: 0}
     - target: {fileID: 7042132553732653646, guid: df79e7b65a5f63f47b6b4209eb6a47c2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3463,7 +3463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042132553732653646, guid: df79e7b65a5f63f47b6b4209eb6a47c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 571
       objectReference: {fileID: 0}
     - target: {fileID: 7042132553732653646, guid: df79e7b65a5f63f47b6b4209eb6a47c2, type: 3}
       propertyPath: m_LocalRotation.x
