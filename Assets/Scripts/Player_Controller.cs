@@ -5,14 +5,18 @@ using UnityEngine.EventSystems;
 public class Player_Controller : MonoBehaviour {
     [SerializeField] Transform playerCamera = null; // Used to access transform of the player camera
     [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float walkSpeed = 6.0f;
+    [SerializeField] float walkSpeed = 10.5f;
+    [SerializeField] float runSpeed = 9.0f;
+    [SerializeField] float runBuildUp = 9.0f;
+    [SerializeField] private float movementSpeed = 10.5f;
+
     [SerializeField] float gravity = -13.0f;
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
 
     [SerializeField] AnimationCurve jumpFallOff;
     [SerializeField] float jumpMultiplier = 10f;
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
-
+    [SerializeField] KeyCode runKey;
     bool isJumping;
 
     [SerializeField] bool lockCursor = true; // This variable will be used to lock the cursor and will start as true
@@ -74,6 +78,7 @@ public class Player_Controller : MonoBehaviour {
 
         controller.Move(velocity * Time.deltaTime);
 
+        SetMovementSpeed();
         JumpInput();
     }
 
@@ -115,6 +120,18 @@ public class Player_Controller : MonoBehaviour {
         if (collider.gameObject.name == "Antenna" || collider.gameObject.name == "Ship Body" || collider.gameObject.name == "Fuel Containers") {
             Game_Manager.tickOffItem(collider.gameObject);
             Destroy(collider.gameObject);
+        }
+    }
+
+    private void SetMovementSpeed()
+    {
+        if(Input.GetKey(runKey))
+        {
+            walkSpeed = Mathf.Lerp(walkSpeed, runSpeed, Time.deltaTime * runBuildUp);
+        }
+        else
+        {
+            walkSpeed = Mathf.Lerp(walkSpeed, movementSpeed, Time.deltaTime * runBuildUp);
         }
     }
 }
