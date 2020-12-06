@@ -16,7 +16,7 @@ public class Raycast : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void Shoot() //MIGHT BE GOOD TO ADD A TIMER UNTIL NEXT RAYCAST CAN BE MADE OTHERWISE KILLING WILL BE SUPER EASY //
     {
         RaycastHit hit;
        if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))

@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 8366741113148549092}
   - component: {fileID: -450721547108779719}
   - component: {fileID: 6117462150200784396}
-  - component: {fileID: 5384402531249762969}
+  - component: {fileID: 2080525544955382494}
   m_Layer: 0
   m_Name: Monster_Prefab
   m_TagString: Monster
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroDistance: 50
   attackDistance: 10
-  hitPoints: 5
+  hitPoints: 50
   audioQueue:
   - {fileID: 8300000, guid: febe56a6fa178b3458608e69f26a48f7, type: 3}
   - {fileID: 8300000, guid: 39d048fe5ac0fe24489d885125296aa0, type: 3}
@@ -1647,20 +1647,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &5384402531249762969
-MeshCollider:
+--- !u!136 &2080525544955382494
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100066}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Radius: 14.2
+  m_Height: 46.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 21.3, z: 0}
 --- !u!1 &8352389140415175077
 GameObject:
   m_ObjectHideFlags: 0

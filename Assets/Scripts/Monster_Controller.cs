@@ -71,18 +71,18 @@ public class Monster_Controller : MonoBehaviour {
 
     public void takeDamage(float amount)
     {
-        Debug.Log("I'm here");
+        Debug.Log("Player shoots the monster");
         hitPoints -=amount;
-        if (hitPoints > 0)
-        {
-            monsterAnim.SetTrigger("HasTakenDamage");
-        }
-
-
         if (hitPoints <= 0)
         {
             //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
             monsterAnim.SetTrigger("HasDied");
+            nav.isStopped = true;
+        }
+        else
+        {
+            monsterAnim.SetTrigger("HasTakenDamage");
+            
         }
     }
 
