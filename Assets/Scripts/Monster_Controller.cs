@@ -29,8 +29,6 @@ public class Monster_Controller : MonoBehaviour {
     private void Update()
     {
         monsterInteractions();
-      //  if (Input.GetKeyDown("h"))
-        //    takeDamage();
     }
 
     private void monsterInteractions()
@@ -58,16 +56,18 @@ public class Monster_Controller : MonoBehaviour {
         if (!nextToPlayer && monsterAnim.GetBool("IsNextToPlayer")) // END ATTACK ANIMATION
             monsterAnim.SetBool("IsNextToPlayer", false);
     }
-    
+
     // WHEN A HIT BY THE MONSTER IS DETECTED
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.name == "Player")
         {
             Debug.Log("HIT DETECTED");
             //TODO: DEPLETE PLAYER'S HEALTH BY 1 HITPOINT (0 HP = Game_Manager.endGame(EndScenario.GAMEOVER))
         }
     }
+
+        
 
     public void takeDamage(float amount)
     {
