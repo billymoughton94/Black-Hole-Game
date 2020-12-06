@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Player_Controller : MonoBehaviour {
+
+    #region Variables
+
     [SerializeField] Transform playerCamera = null; // Used to access transform of the player camera
     [SerializeField] float mouseSensitivity = 3.5f;
     [SerializeField] float walkSpeed = 10.5f;
@@ -29,9 +32,21 @@ public class Player_Controller : MonoBehaviour {
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
+    public Transform heavyParent;
+    private Vector3 heavyParentOrigin;
+
+    private float movementCounter;
+    private float idleCounter;
+
+    private Vector3 targetHeadBobPosition;
+
+    #endregion
+
+
     void Start() {
         controller = GetComponent<CharacterController>();
         UI = GameObject.Find("UI").GetComponent<UI_Controller>();
+        heavyParentOrigin = heavyParent.localPosition;
         // Conditional statement that checks if the lockCursor boolean is set to true or false in order to not only lock the cursor to the center but to also make it invisible
         if (lockCursor) {
             Cursor.lockState = CursorLockMode.Locked;
@@ -64,6 +79,10 @@ public class Player_Controller : MonoBehaviour {
 
     // Dedicated update method for movement 
     void UpdateMovement() {
+
+        float headBobH = Input.GetAxisRaw("Horizontal");
+        float headBobV = Input.GetAxisRaw("Vertical");
+
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
 
@@ -78,8 +97,25 @@ public class Player_Controller : MonoBehaviour {
 
         controller.Move(velocity * Time.deltaTime);
 
-        SetMovementSpeed();
+        SetMovementSpeed(); //Call for sprinting
         JumpInput();
+
+
+        if (headBobH == 0 && headBobV == 0)
+        {
+            HeadBob(idleCounter, 0.025f, 0.025f);
+            idleCounter += Time.deltaTime;
+            heavyParent.localPosition = Vector3.Lerp(heavyParent.localPosition, targetHeadBobPosition, Time.deltaTime * 2f);
+
+        }
+        else
+        {
+            HeadBob(movementCounter, 0.035f, 0.035f);
+            movementCounter+= Time.deltaTime * 3f;
+            heavyParent.localPosition = Vector3.Lerp(heavyParent.localPosition, targetHeadBobPosition, Time.deltaTime * 6f);
+
+        }
+
     }
 
     //Method to detect when jumping key is pressed 
@@ -95,7 +131,7 @@ public class Player_Controller : MonoBehaviour {
             UI.togglePanel("Inventory");
         }
     }
-    
+
     private void craftingInput() {
         if (Input.GetKeyUp(KeyCode.C)) {
             UI.togglePanel("Crafting");
@@ -123,9 +159,9 @@ public class Player_Controller : MonoBehaviour {
         }
     }
 
-    private void SetMovementSpeed()
+    private void SetMovementSpeed() //Method for sprinting functionality 
     {
-        if(Input.GetKey(runKey))
+        if (Input.GetKey(runKey))
         {
             walkSpeed = Mathf.Lerp(walkSpeed, runSpeed, Time.deltaTime * runBuildUp);
         }
@@ -133,5 +169,10 @@ public class Player_Controller : MonoBehaviour {
         {
             walkSpeed = Mathf.Lerp(walkSpeed, movementSpeed, Time.deltaTime * runBuildUp);
         }
+    }
+
+    void HeadBob(float z, float x, float y)
+    {
+        targetHeadBobPosition =  heavyParentOrigin + new Vector3(Mathf.Cos(z) * x, Mathf.Sin(z*2) * y, 0);
     }
 }
