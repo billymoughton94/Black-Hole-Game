@@ -28,7 +28,7 @@ public class Raycast : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void Shoot() //MIGHT BE GOOD TO ADD A TIMER UNTIL NEXT RAYCAST CAN BE MADE OTHERWISE KILLING WILL BE SUPER EASY //
     {
         muzzleFlash.Play();
         RaycastHit hit;
