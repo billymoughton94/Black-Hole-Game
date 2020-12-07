@@ -41,6 +41,7 @@ public class Player_Controller : MonoBehaviour {
     private Vector3 targetHeadBobPosition;
 
     public bool movementLock = false;
+    public bool mouseLock = false;
 
     #endregion
 
@@ -62,7 +63,8 @@ public class Player_Controller : MonoBehaviour {
     }
 
     void Update() {
-        UpdateMouseLook();
+        if(!mouseLock)
+            UpdateMouseLook();
         if(!movementLock)
             UpdateMovement();
         inventoryInput();
