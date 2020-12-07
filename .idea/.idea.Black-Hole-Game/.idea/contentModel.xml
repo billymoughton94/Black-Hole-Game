@@ -29,7 +29,6 @@
           <e p="Crafting_Controller.cs" t="Include" />
           <e p="Description_Controller.cs" t="Include" />
           <e p="Game_Manager.cs" t="Include" />
-          <e p="Gravity_Controller.cs" t="Include" />
           <e p="Inventory_Controller.cs" t="Include" />
           <e p="Item_Controller.cs" t="Include" />
           <e p="Monster_Controller.cs" t="Include" />
@@ -37,6 +36,7 @@
           <e p="Raycast.cs" t="Include" />
           <e p="Recipe_Controller.cs" t="Include" />
           <e p="Survival_Controller.cs" t="Include" />
+          <e p="Title_Controller.cs" t="Include" />
           <e p="UI_Controller.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
