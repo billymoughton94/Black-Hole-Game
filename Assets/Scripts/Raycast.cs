@@ -4,7 +4,7 @@ public class Raycast : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 50f;
-    public float fireRate = 100f;
+    public float fireRate;
     public Transform gunEnd;
     private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
     private float nextFire = 0f;
@@ -24,10 +24,16 @@ public class Raycast : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (!Pause_Menu.GameIsPaused)
         {
-            nextFire = Time.time + 1f / fireRate;
-            Shoot();
+            if (Input.GetButtonDown("Fire1") && Time.time >= nextFire)
+            {
+                Debug.Log("Time: " + Time.time);
+                Debug.Log("Next Fire: " + nextFire);
+
+                nextFire = Time.time + (1f / fireRate);
+                Shoot();
+            }
         }
     }
 

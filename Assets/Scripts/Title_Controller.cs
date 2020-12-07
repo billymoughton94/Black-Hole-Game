@@ -38,7 +38,7 @@ public class Title_Controller : MonoBehaviour {
     }
     
     IEnumerator LoadSceneAsync() {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(7);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("SampleScene");
         while (!asyncLoad.isDone) {
             yield return null;

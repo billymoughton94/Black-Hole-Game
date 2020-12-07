@@ -66,10 +66,15 @@ public class Player_Controller : MonoBehaviour {
     void Update() {
         if(!mouseLock)
             UpdateMouseLook();
-        if(!movementLock)
+        if (!movementLock)
             UpdateMovement();
-        inventoryInput();
-        craftingInput();
+
+        if (!Pause_Menu.GameIsPaused)
+        {
+            inventoryInput();
+            craftingInput();
+        }
+        
     }
 
     // Dedicated update method for mouse movement functionality  

@@ -1093,7 +1093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -750}
+  m_AnchoredPosition: {x: 0, y: -808.84}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218082187
@@ -1703,13 +1703,12 @@ MonoBehaviour:
 
 
     Explore the planet and collect resources. Use those
-    resources to craft items and parts to repair your ship. Some ship parts can be
-    found by exploring the planet.
+    resources to craft items and parts to repair your ship.
 
 
-    Watch out for the hostile aliens and make
-    sure you watch your hunger levels. Ensure it doesn''t reach 0 by collecting and
-    eating the food found in tthe planet.
+    Watch out for the
+    hostile aliens and make sure you watch your hunger levels. Ensure it doesn''t
+    reach 0 by collecting and eating the food found in tthe planet.
 
 '
   m_isRightToLeft: 0
