@@ -4,10 +4,12 @@ public class Raycast : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 50f;
-    public float fireRate = 15f;
+    public float fireRate = 100f;
     public Transform gunEnd;
     private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
-    private float nextFire = 1f;
+    private float nextFire = 0f;
+
+    public ParticleSystem muzzleFlash;
 
     public Camera fpsCam;
     Inventory_Controller inventory;
@@ -26,8 +28,9 @@ public class Raycast : MonoBehaviour
         }
     }
 
-    void Shoot() //MIGHT BE GOOD TO ADD A TIMER UNTIL NEXT RAYCAST CAN BE MADE OTHERWISE KILLING WILL BE SUPER EASY //
+    void Shoot()
     {
+        muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
