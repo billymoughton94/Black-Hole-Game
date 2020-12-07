@@ -1524,6 +1524,7 @@ MonoBehaviour:
   aggroDistance: 50
   attackDistance: 9.25
   hitPoints: 50
+  damagePoints: 10
   audioQueue:
   - {fileID: 8300000, guid: febe56a6fa178b3458608e69f26a48f7, type: 3}
   - {fileID: 8300000, guid: 39d048fe5ac0fe24489d885125296aa0, type: 3}

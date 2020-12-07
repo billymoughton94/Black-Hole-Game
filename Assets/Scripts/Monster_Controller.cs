@@ -12,7 +12,7 @@ public class Monster_Controller : MonoBehaviour {
     public float aggroDistance;
     public float attackDistance;
     public float hitPoints = 50f;
-
+    public int damagePoints;
     private AudioSource audioSource;
     public AudioClip[] audioQueue;
 
@@ -65,7 +65,7 @@ public class Monster_Controller : MonoBehaviour {
         if (other.gameObject.tag == "Player" && alive)
         {
             Debug.Log("HIT DETECTED");
-            //TODO: DEPLETE PLAYER'S HEALTH BY 1 HITPOINT (0 HP = Game_Manager.endGame(EndScenario.GAMEOVER))
+            player.GetComponent<Player_Controller>().takeDamage(damagePoints);
         }
     }
 
@@ -80,6 +80,8 @@ public class Monster_Controller : MonoBehaviour {
             
             monsterAnim.SetTrigger("HasDied");
             nav.isStopped = true;
+            audioSource.Stop();
+            StopAllCoroutines();
             alive = false;
             try
             {

@@ -37,6 +37,7 @@ public class Player_Controller : MonoBehaviour {
 
     private float movementCounter;
     private float idleCounter;
+    private float hitPoints = 100f;
 
     private Vector3 targetHeadBobPosition;
 
@@ -172,5 +173,15 @@ public class Player_Controller : MonoBehaviour {
     void HeadBob(float z, float x, float y)
     {
         targetHeadBobPosition =  heavyParentOrigin + new Vector3(Mathf.Cos(z) * x, Mathf.Sin(z*2) * y, 0);
+    }
+
+    public void takeDamage(int damage)
+    {
+        hitPoints -= damage;
+        GetComponent<Survival_Controller>().changeHealth(-damage);
+        if(hitPoints <= 0)
+        {
+            Game_Manager.endGame(EndScenario.GAMEOVER);
+        }
     }
 }

@@ -83,6 +83,17 @@ public class Crafting_Controller : MonoBehaviour {
         if (name.Equals("Antenna")) {
             recipes.Remove(name);
         }
+
+        if (name.Equals("Ship Body"))
+        {
+            recipes.Remove(name);
+        }
+
+        if (name.Equals("Fuel Containers"))
+        {
+            recipes.Remove(name);
+        }
+
         // Update the UI
         UI_Controller UI = GameObject.Find("UI").GetComponent<UI_Controller>();
         UI.updateUI();

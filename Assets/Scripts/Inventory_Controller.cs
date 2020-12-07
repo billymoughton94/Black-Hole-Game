@@ -29,7 +29,7 @@ public class Inventory_Controller : MonoBehaviour {
             case "Antenna":
                 Game_Manager.tickOffItem("Antenna");
                 break;
-           case "Ship Body":
+            case "Ship Body":
                 Game_Manager.tickOffItem("Ship Body");
                 break;
             case "Fuel Containers":
