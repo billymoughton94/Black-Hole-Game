@@ -14,9 +14,12 @@ public class Raycast : MonoBehaviour
     public Camera fpsCam;
     Inventory_Controller inventory;
 
+    AudioSource gunShotAudio;
+
     private void Start()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory_Controller>();
+        gunShotAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,6 +33,7 @@ public class Raycast : MonoBehaviour
 
     void Shoot() //MIGHT BE GOOD TO ADD A TIMER UNTIL NEXT RAYCAST CAN BE MADE OTHERWISE KILLING WILL BE SUPER EASY //
     {
+        gunShotAudio.Play();
         muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
