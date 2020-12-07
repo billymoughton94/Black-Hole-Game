@@ -37,7 +37,6 @@ public class Player_Controller : MonoBehaviour {
 
     private float movementCounter;
     private float idleCounter;
-    private float hitPoints = 100f;
 
     private Vector3 targetHeadBobPosition;
 
@@ -182,11 +181,6 @@ public class Player_Controller : MonoBehaviour {
 
     public void takeDamage(int damage)
     {
-        hitPoints -= damage;
         GetComponent<Survival_Controller>().changeHealth(-damage);
-        if(hitPoints <= 0)
-        {
-            Game_Manager.endGame(EndScenario.GAMEOVER);
-        }
     }
 }

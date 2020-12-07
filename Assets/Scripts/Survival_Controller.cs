@@ -10,7 +10,7 @@ public class Survival_Controller : MonoBehaviour {
     void Start() {
         health = 100;
         hunger = 100;
-        InvokeRepeating("hungerTick", 3.0f, 3.0f);
+        InvokeRepeating("hungerTick", 3.0f, 2.0f);
     }
 
     private void hungerTick() {
@@ -21,6 +21,8 @@ public class Survival_Controller : MonoBehaviour {
 
     public void changeHealth(int amount) {
         health += amount;
+        if (health <= 0)
+            Game_Manager.endGame(EndScenario.GAMEOVER);
     }
 
     public void restoreHunger(int amount) {
