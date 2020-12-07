@@ -13,21 +13,53 @@ public class Crafting_Controller : MonoBehaviour {
         inventory = GetComponent<Inventory_Controller>();
         setRecipes();
     }
-    
+
     // Set up the recipes dictionary and add the recipes to be used in the game
-    private void setRecipes() {
+    private void setRecipes()
+    {
         recipes = new Dictionary<string, Dictionary<Item, List<Item>>>();
         Dictionary<Item, List<Item>> antennaRecipe = new Dictionary<Item, List<Item>>() {
             {new Item(("Antenna")), new List<Item>() {
-                {new Item("Iron", 10)},
+                {new Item("Iron", 15)},
                 {new Item("Magnet", 1)}
-            }}, 
+            }}
         };
+
+        Dictionary<Item, List<Item>> magnetRecipe = new Dictionary<Item, List<Item>>() {
+            {new Item(("Magnet")), new List<Item>() {
+                {new Item("Iron", 5)}
+            }}
+            };
+
+        Dictionary<Item, List<Item>> fuelContainersRecipe = new Dictionary<Item, List<Item>>() {
+            {new Item(("Fuel Containers")), new List<Item>() {
+                {new Item("Obsidian", 8)},
+                {new Item("Iron", 5)}
+            }}
+        };
+
+        Dictionary<Item, List<Item>> shipBodyRecipe = new Dictionary<Item, List<Item>>() {
+            {new Item(("Ship Body")), new List<Item>() {
+                {new Item("Plate Sheet", 2)},
+                {new Item("Obsidian", 2)}
+            }}
+        };
+
+        Dictionary<Item, List<Item>> plateSheetRecipe = new Dictionary<Item, List<Item>>() {
+            {new Item(("Plate Sheet")), new List<Item>() {
+                {new Item("Iron", 5)}
+            }}
+        };
+
         recipes.Add("Antenna", antennaRecipe);
+        recipes.Add("Magnet", magnetRecipe);
+        recipes.Add("Fuel Containers", fuelContainersRecipe);
+        recipes.Add("Ship Body", shipBodyRecipe);
+        recipes.Add("Plate Sheet", plateSheetRecipe);
     }
-    
-    // Return the recipe dictionary
-    public Dictionary<String, Dictionary<Item, List<Item>>> getRecipes() {
+
+        // Return the recipe dictionary
+        public Dictionary<String, Dictionary<Item, List<Item>>> getRecipes() {
         return recipes;
     }
     

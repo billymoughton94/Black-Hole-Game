@@ -14,11 +14,15 @@ public class Description_Controller : MonoBehaviour {
 
     void Start() {
         itemDescription = new Dictionary<string, string>();
-        itemDescription.Add("Iron", "Used for crafting");
-        itemDescription.Add("Magnet", "Used for crafting");
-        itemDescription.Add("Antenna", "Useful for navigating the skies. A key item in repairing the ship.");
-        itemDescription.Add("Food", "Can be eaten to restore hunger.");
-        itemDescription.Add("Monster Meat", "A questionable choice of food. Restores 20 hunger.");
+        itemDescription.Add("Iron", "A common ore use for crafting");
+        itemDescription.Add("Obsidian", "A rare ore used for crafting");
+        itemDescription.Add("Magnet", "Used for crafting the antenna.");
+        itemDescription.Add("Antenna", "Useful for navigating the skies. A key item in repairing the ship");
+        itemDescription.Add("Berry", "Restores 20 Hunger when consumed");
+        itemDescription.Add("Health Pack", "Restores 10 Health when consumed. Use wisely...");
+        itemDescription.Add("Ship Body", "A repaired body for your ship");
+        itemDescription.Add("Plate Sheet", "Welded metal that can be used to create a ship body");
+        itemDescription.Add("Fuel Containers", "You'll need fuel to escape this hellhole...");
     }
     
     void Update() {

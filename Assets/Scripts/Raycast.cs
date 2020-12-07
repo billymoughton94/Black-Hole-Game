@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
@@ -11,7 +10,12 @@ public class Raycast : MonoBehaviour
     private float nextFire = 1f;
 
     public Camera fpsCam;
-    // Update is called once per frame
+    Inventory_Controller inventory;
+
+    private void Start()
+    {
+        inventory = GameObject.Find("Player").GetComponent<Inventory_Controller>();
+    }
 
     void Update()
     {
@@ -25,15 +29,31 @@ public class Raycast : MonoBehaviour
     void Shoot() //MIGHT BE GOOD TO ADD A TIMER UNTIL NEXT RAYCAST CAN BE MADE OTHERWISE KILLING WILL BE SUPER EASY //
     {
         RaycastHit hit;
-       if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
 
-           Monster_Controller target = hit.transform.GetComponent<Monster_Controller>();
-
-            if (target != null)
+            switch (hit.transform.tag)
             {
-                target.takeDamage(damage);
+                case "Monster":
+                    Monster_Controller target = hit.transform.GetComponent<Monster_Controller>();
+                    if (target != null)
+                    {
+                        target.takeDamage(damage);
+                    }
+                    break;
+                case "Iron":
+                    inventory.addItem(new Item("Iron", 5));
+                    Destroy(hit.transform.gameObject);
+                    break;
+                case "Berry":
+                    inventory.addItem(new Item("Berry", 1, true));
+                    Destroy(hit.transform.gameObject);
+                    break;
+                case "Obsidian":
+                    inventory.addItem(new Item("Obsidian", 2));
+                    Destroy(hit.transform.gameObject);
+                    break;
             }
         }
     }

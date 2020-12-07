@@ -26,7 +26,7 @@ public class Game_Manager : MonoBehaviour {
     }
 
     // UPDATE THE ITEMS LIST UI AND CREATE VICTORY END GAME IF ALL ITEMS COLLECTED
-    public static void tickOffItem(GameObject item) { 
+    public static void tickOffItem(string item) { 
         // Call the UI Controller to update the parts list
         GameObject.Find("UI").GetComponent<UI_Controller>().updatePartsList(item);
         itemCount++;

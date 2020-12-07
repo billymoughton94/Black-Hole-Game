@@ -157,13 +157,6 @@ public class Player_Controller : MonoBehaviour {
         isJumping = false;
     }
 
-    void OnTriggerEnter(Collider collider) { //Method for how player interacts with key objects in the game. (This is to simluate picking it up and storing it)
-        if (collider.gameObject.name == "Antenna" || collider.gameObject.name == "Ship Body" || collider.gameObject.name == "Fuel Containers") {
-            Game_Manager.tickOffItem(collider.gameObject);
-            Destroy(collider.gameObject);
-        }
-    }
-
     private void SetMovementSpeed() //Method for sprinting functionality 
     {
         if (Input.GetKey(runKey))

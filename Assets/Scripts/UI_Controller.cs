@@ -38,9 +38,9 @@ public class UI_Controller : MonoBehaviour {
         updateRecipeList();
     }
 
-    public void updatePartsList(GameObject item) {
+    public void updatePartsList(string name) {
         // Add to the quantity
-        parts[item.name] += 1;
+        parts[name] += 1;
         // Get the text object
         TextMeshProUGUI partsList = transform.Find("PartList").GetComponent<TextMeshProUGUI>();
         // Create the string to be displayed

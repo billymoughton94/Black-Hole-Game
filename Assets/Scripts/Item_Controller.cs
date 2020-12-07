@@ -47,10 +47,10 @@ public class Item_Controller : MonoBehaviour, IPointerEnterHandler ,IPointerExit
         Survival_Controller survival =player.GetComponent<Survival_Controller>();
         Inventory_Controller inventory = player.GetComponent<Inventory_Controller>();
         switch (name) {
-            case "Monster Meat":
+            case "Berry":
                 int hungerValue = 20;
                 survival.restoreHunger(hungerValue);
-                inventory.removeItem(new Item("Monster Meat"));
+                inventory.removeItem(new Item("Berry"));
                 break;
             case "Health Pack":
                 int healthValue = 10;

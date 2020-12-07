@@ -9,10 +9,7 @@ public class Inventory_Controller : MonoBehaviour {
     // Initialise the GameObjectt
     void Start() {
         items = new Dictionary<string, Item>();
-        // For testing purposes adding a bunch of items
-        items.Add("Iron", new Item("Iron", 20, false));
-        items.Add("Magnet", new Item("Magnet", 2, false));
-        items.Add("Monster Meat", new Item("Food", 2, true));
+        items.Add("Health Pack", new Item("Health Pack", 3, true));
     }
 
     
@@ -24,6 +21,20 @@ public class Inventory_Controller : MonoBehaviour {
         } else {
             // If it does not, add a new Item object to the inventory
             items.Add(item.getName(), item);
+        }
+
+        // checking the main components required to win the game
+        switch (item.getName())
+        {
+            case "Antenna":
+                Game_Manager.tickOffItem("Antenna");
+                break;
+           case "Ship Body":
+                Game_Manager.tickOffItem("Ship Body");
+                break;
+            case "Fuel Containers":
+                Game_Manager.tickOffItem("Fuel Containers");
+                break;
         }
     }
 
