@@ -16,8 +16,10 @@ public class Monster_Controller : MonoBehaviour {
     private AudioSource audioSource;
     public AudioClip[] audioQueue;
 
+    bool alive;
     // Start is called before the first frame update
     void Start() {
+        alive = true;
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         monsterAnim = GetComponent<Animator>();
@@ -60,7 +62,7 @@ public class Monster_Controller : MonoBehaviour {
     // WHEN A HIT BY THE MONSTER IS DETECTED
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player" && alive)
         {
             Debug.Log("HIT DETECTED");
             //TODO: DEPLETE PLAYER'S HEALTH BY 1 HITPOINT (0 HP = Game_Manager.endGame(EndScenario.GAMEOVER))
@@ -75,9 +77,19 @@ public class Monster_Controller : MonoBehaviour {
         hitPoints -=amount;
         if (hitPoints <= 0)
         {
-            //TODO: DEAD ANIMATION & DELETE GAME OBJECT AFTER FEW SECONDS
+            
             monsterAnim.SetTrigger("HasDied");
             nav.isStopped = true;
+            alive = false;
+            try
+            {
+                Destroy(transform.Find("Monster_Icon").gameObject);
+            }
+            catch(NullReferenceException n)
+            {
+                Debug.Log("Stop! He's already dead...");
+            }
+                
         }
         else
         {
