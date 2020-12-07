@@ -1136,6 +1136,11 @@ Transform:
   m_Father: {fileID: 55833808}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &265202920 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 335089323253049965, guid: 15c7fb64b7a4ab44d98ebd02ac96b181, type: 3}
+  m_PrefabInstance: {fileID: 1280783571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &268446341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4299,7 +4304,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 335089323253049965, guid: 15c7fb64b7a4ab44d98ebd02ac96b181, type: 3}
-      propertyPath: looping
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 335089323253049966, guid: 15c7fb64b7a4ab44d98ebd02ac96b181, type: 3}
@@ -6447,7 +6452,7 @@ PrefabInstance:
     - target: {fileID: 2801154367938453388, guid: 36cd6aa47d237534fb877281dedde0b2, type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 335089323253049965, guid: 15c7fb64b7a4ab44d98ebd02ac96b181, type: 3}
+      objectReference: {fileID: 265202920}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36cd6aa47d237534fb877281dedde0b2, type: 3}
 --- !u!1001 &4045314542172814387
