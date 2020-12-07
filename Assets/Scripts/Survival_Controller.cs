@@ -15,6 +15,8 @@ public class Survival_Controller : MonoBehaviour {
 
     private void hungerTick() {
         hunger -= 1;
+        if (hunger <= 0)
+            Game_Manager.endGame(EndScenario.GAMEOVER);
     }
 
     public void changeHealth(int amount) {
