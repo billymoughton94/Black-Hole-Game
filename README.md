@@ -18,5 +18,6 @@ Grass And Flowers Pack 1 - Vladislav Pochezhertsev - https://assetstore.unity.co
 Horror and Sci-Fi Ambience LOOPS LITE - Seth O'Dale - https://assetstore.unity.com/packages/audio/ambient/horror-and-sci-fi-ambience-loops-lite-99626
 Monster SFX - 111518 - GWriterStudio - https://assetstore.unity.com/packages/audio/sound-fx/monster-sfx-111518-132868
 Clean Vector Icons - PONETI - https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084#content
+Futuristic Gun SoundFX - MGWSoundDesign - https://assetstore.unity.com/packages/audio/sound-fx/weapons/futuristic-gun-soundfx-100851
 
 ----------- UPDATE USED ASSETS WHEN PUSHING ----------
