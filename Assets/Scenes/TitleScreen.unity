@@ -1693,20 +1693,23 @@ MonoBehaviour:
     Use the Mouse to look
     arouund and click to shoot
 
+    Shooting can be used to collect resources and
+    attack enemies
+
     Open the inventory menu with the I key
 
-    Open
-    the crafting menu with the C key
+    Open the crafting
+    menu with the C key
 
 
-    Explore the planet and collect resources.
-    Use those resources to craft items and parts to repair your ship. Some ship parts
-    can be found by exploring the planet.
+    Explore the planet and collect resources. Use those
+    resources to craft items and parts to repair your ship. Some ship parts can be
+    found by exploring the planet.
 
 
-    Watch out for the hostile aliens
-    and make sure you watch your hunger levels. Ensure it doesn''t reach 0 by collecting
-    and eating the food found in tthe planet.
+    Watch out for the hostile aliens and make
+    sure you watch your hunger levels. Ensure it doesn''t reach 0 by collecting and
+    eating the food found in tthe planet.
 
 '
   m_isRightToLeft: 0
