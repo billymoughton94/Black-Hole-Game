@@ -4,14 +4,20 @@ using UnityEngine;
 public class Raycast : MonoBehaviour
 {
     public float damage = 10f;
-    public float range = 100f;
+    public float range = 50f;
+    public float fireRate = 15f;
+    public Transform gunEnd;
+    private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
+    private float nextFire = 1f;
 
     public Camera fpsCam;
     // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
+            nextFire = Time.time + 1f / fireRate;
             Shoot();
         }
     }
